@@ -1,0 +1,30 @@
+cs:
+  blueberry_cms:
+    admin:
+      pages:
+        block_fields:
+          remove: Odebrat blok
+        edit:
+          title: Upravit stránku
+        form:
+          add: Přidat %{type}
+          submit: Uložit stránku
+          blocks: Bloky
+        index:
+          title: Seznam stránek
+          list: Stránky
+          new: Přidat stránku
+          new_child: Přidat podstránku
+        new:
+          title: Vytvořit stránku
+      common:
+        back: Zpět
+        edit: Upravit
+        destroy: Smazat
+  mongoid:
+    attributes:
+      'blueberry_cms/page':
+        path: Url adresa
+        parent: Rodič
+        slug: Slug
+        name: Název

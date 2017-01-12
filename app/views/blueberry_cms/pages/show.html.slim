@@ -1,0 +1,9 @@
+- if !@page.root? && @page.children.any?
+  section
+    h2 Sidebar
+    ul
+      - @page.children.each do |page|
+        li = link_to page.name, page.to_path
+
+- @page.blocks.each do |block|
+  .block == block.render(liquid_view_context)
