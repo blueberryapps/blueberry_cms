@@ -1,11 +1,27 @@
 = f.input :show_in_menu, as: :boolean
 = f.association :parent, collection: (BlueberryCMS::Page.all - [@page])
 = f.input :name
-= f.input :slug
-  = f.error :path
-  = f.fields_for :slug_translations do |localized_field|
-    - I18n.available_locales.each do |locale|
-      = localized_field.input locale, input_html: { value: f.object.slug_translations[locale] }
+  .row
+    = f.simple_fields_for :name_translations do |localized_field|
+      - I18n.available_locales.each do |locale|
+          .col-md-6 = localized_field.input locale, input_html: { value: f.object.name_translations[locale] }
+.panel.panel-default
+  .panel-body
+    = f.input :meta_title
+      .row
+        = f.simple_fields_for :meta_title_translations do |localized_field|
+          - I18n.available_locales.each do |locale|
+              .col-md-6 = localized_field.input locale, input_html: { value: f.object.meta_title_translations[locale] }
+    = f.input :meta_description
+      .row
+        = f.simple_fields_for :meta_description_translations do |localized_field|
+          - I18n.available_locales.each do |locale|
+              .col-md-6 = localized_field.input locale, input_html: { value: f.object.meta_description_translations[locale] }
+    = f.input :meta_keywords
+      .row
+        = f.simple_fields_for :meta_keywords_translations do |localized_field|
+          - I18n.available_locales.each do |locale|
+              .col-md-6 = localized_field.input locale, input_html: { value: f.object.meta_keywords_translations[locale] }
 
 h3 = t '.blocks'
 #blocks
@@ -14,6 +30,6 @@ h3 = t '.blocks'
 
   .links
     - BlueberryCMS::PageBlock.types.each do |type|
-      = link_to_add_association t('.add', type: type.model_name.human), f, :blocks,
+      =< link_to_add_association t('.add', type: type.model_name.human), f, :blocks,
                                    wrap_object: Proc.new { |block| block.becomes(type) },
                                    class:       'btn btn-primary'

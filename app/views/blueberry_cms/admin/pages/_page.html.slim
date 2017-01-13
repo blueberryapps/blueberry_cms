@@ -2,7 +2,7 @@ tr
   td
     => '-' * page.depth
     = page.name
-  td = page.path
+  td = page.to_path
   td
     - if page.show_in_menu
       i.glyphicon.glyphicon-ok
