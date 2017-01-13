@@ -23,24 +23,11 @@
         thead
           tr
             th = BlueberryCMS::Page.human_attribute_name :name
-            th = BlueberryCMS::Page.human_attribute_name :slug
             th = BlueberryCMS::Page.human_attribute_name :path
+            th = BlueberryCMS::Page.human_attribute_name :show_in_menu
             th
         tbody
-          - @pages.each do |page|
-            tr
-              td = page.name
-              td = page.slug
-              td = page.path
-              td
-                = link_to [:new, :admin, :page, parent_id: page.id], class: 'btn btn-sm btn-primary'
-                  i.glyphicon.glyphicon-plus
-                  = t('.new_child')
-                '
-                = link_to [:edit, :admin, page], class: 'btn btn-sm btn-primary'
-                  i.glyphicon.glyphicon-pencil
-                  = t('blueberry_cms.admin.common.edit')
-                '
-                = link_to [:admin, page], method: :delete, class: 'btn btn-sm btn-warning'
-                  i.glyphicon.glyphicon-remove
-                  = t('blueberry_cms.admin.common.destroy')
+          - if @pages.any?
+            = render partial: 'page', collection: @pages, as: :page
+          - else
+            = render 'empty'

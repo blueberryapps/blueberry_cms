@@ -5,12 +5,13 @@ module BlueberryCMS
     include Mongoid::Tree::Ordering
 
     field :name
-    field :published_at,     type: DateTime
     field :meta_title,       localize: true
     field :meta_description, localize: true
     field :meta_keywordds,   localize: true, type: Array
     field :slug,             localize: true
     field :path,             localize: true
+    field :published_at,     type: DateTime
+    field :show_in_menu,     type: Boolean
 
     embeds_many :blocks, class_name: 'BlueberryCMS::PageBlock'
     accepts_nested_attributes_for :blocks, allow_destroy: true
@@ -20,6 +21,8 @@ module BlueberryCMS
     after_rearrange :rebuild_path
 
     before_destroy :move_children_to_parent
+
+    scope :in_menu, -> { where(show_in_menu: true) }
 
     def path
       root? ? '' : super

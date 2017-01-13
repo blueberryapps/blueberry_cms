@@ -6,6 +6,8 @@ cs:
           remove: Odebrat blok
         edit:
           title: Upravit stránku
+        empty:
+          no_pages: Nebyly nalezeny žádné stránky
         form:
           add: Přidat %{type}
           submit: Uložit stránku
@@ -14,9 +16,11 @@ cs:
           title: Seznam stránek
           list: Stránky
           new: Přidat stránku
-          new_child: Přidat podstránku
         new:
           title: Vytvořit stránku
+        page:
+          preview: Náhled
+          new_child: Přidat podstránku
       common:
         back: Zpět
         edit: Upravit
@@ -28,3 +32,4 @@ cs:
         parent: Rodič
         slug: Slug
         name: Název
+        show_in_menu: V hlavním menu

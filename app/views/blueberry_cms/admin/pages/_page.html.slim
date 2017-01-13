@@ -1,0 +1,29 @@
+tr
+  td
+    => '-' * page.depth
+    = page.name
+  td = page.path
+  td
+    - if page.show_in_menu
+      i.glyphicon.glyphicon-ok
+    - else
+      i.glyphicon.glyphicon-remove
+
+  td
+    = link_to page.to_path, target: :_blank, class: 'btn btn-sm btn-secondary'
+      i.glyphicon.glyphicon-eye-open
+      = t('.preview')
+    '
+    = link_to [:new, :admin, :page, parent_id: page.id], class: 'btn btn-sm btn-primary'
+      i.glyphicon.glyphicon-plus
+      = t('.new_child')
+    '
+    = link_to [:edit, :admin, page], class: 'btn btn-sm btn-primary'
+      i.glyphicon.glyphicon-pencil
+      = t('blueberry_cms.admin.common.edit')
+    '
+    = link_to [:admin, page], method: :delete, class: 'btn btn-sm btn-warning'
+      i.glyphicon.glyphicon-remove
+      = t('blueberry_cms.admin.common.destroy')
+
+= render partial: 'page', collection: page.children, as: :page if page.children.any?

@@ -1,3 +1,4 @@
+= f.input :show_in_menu, as: :boolean
 = f.association :parent, collection: (BlueberryCMS::Page.all - [@page])
 = f.input :name
 = f.input :slug
