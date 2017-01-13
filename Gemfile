@@ -1,3 +1,4 @@
+source 'https://rails-assets.org'
 source 'https://rubygems.org'
 
 # Declare your gem's dependencies in blueberry_cms.gemspec.

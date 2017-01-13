@@ -11,6 +11,18 @@ Add this line to your application's Gemfile:
 gem 'blueberry_cms'
 ```
 
+Add this line to your application's sass:
+
+```sass
+@import blueberry_cms
+```
+
+Add this line to your application's coffeescript:
+
+```coffee
+#= require blueberry_cms
+```
+
 And then execute:
 ```bash
 $ bundle
