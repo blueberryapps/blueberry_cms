@@ -1,6 +1,7 @@
 require 'cocoon'
 require 'liquid'
 require 'mongoid'
+require 'mongoid/slug'
 require 'mongoid/tree'
 require 'redcarpet'
 require 'simple_form'

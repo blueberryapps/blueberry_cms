@@ -1,8 +1,10 @@
 module BlueberryCMS
   module Admin
     class PagesController < BlueberryCMS.page_admin_controller.constantize
+      helper BlueberryCMS::PagesHelper
+
       def index
-        @pages = Page.all
+        @pages = Page.roots
       end
 
       def new
@@ -25,7 +27,6 @@ module BlueberryCMS
 
       def update
         @page = Page.find(params[:id])
-        p page_params.to_hash
         if @page.update_attributes(page_params)
           redirect_to [:admin, :pages]
         else
@@ -48,12 +49,16 @@ module BlueberryCMS
         params.
           require(:page).
           permit(
-            :parent_id, :name,
+            :parent_id, :show_in_menu,
             slug_translations: [:cs, :en],
+            meta_title_translations: [:cs, :en],
+            meta_description_translations: [:cs, :en],
+            meta_keywords_translations: [:cs, :en],
+            name_translations: [:cs, :en],
             blocks_attributes: [
               :_destroy, :id, :_type, :urls,
               page_ids: [],
-              content_translations: [:cs, :en],
+              content_translations: [:cs, :en]
             ]
           )
       end

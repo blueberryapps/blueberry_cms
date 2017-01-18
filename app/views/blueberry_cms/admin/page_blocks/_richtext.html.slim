@@ -1,0 +1,4 @@
+= f.input :content
+  = f.fields_for :content_translations do |localized_field|
+    - I18n.available_locales.map do |locale|
+      = localized_field.input locale, input_html: { value: richtext.content_translations[locale], rows: 10, cols: 50 }, as: :text

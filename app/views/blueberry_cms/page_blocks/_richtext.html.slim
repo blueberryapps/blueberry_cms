@@ -1,0 +1,2 @@
+- output = Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true, autolink: false, prettify: true).render(richtext.content)
+== Liquid::Template.parse(output).render('h' => liquid_view_context)
