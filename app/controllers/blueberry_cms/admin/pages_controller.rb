@@ -1,6 +1,8 @@
 module BlueberryCMS
   module Admin
     class PagesController < BlueberryCMS.page_admin_controller.constantize
+      helper BlueberryCMS::PagesHelper
+
       def index
         @pages = Page.roots
       end

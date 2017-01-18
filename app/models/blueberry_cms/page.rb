@@ -3,7 +3,6 @@ module BlueberryCMS
     include Mongoid::Document
     include Mongoid::Tree
     include Mongoid::Tree::Ordering
-    include Mongoid::Tree::Traversal
     include Mongoid::Slug
 
     field :name,             localize: true
@@ -30,7 +29,7 @@ module BlueberryCMS
     scope :in_menu, -> { where(show_in_menu: true) }
 
     def path
-      homepage? ? '' : super
+      root? ? '' : super
     end
 
     def to_path
@@ -52,13 +51,7 @@ module BlueberryCMS
         [parent.path, slug_builder.to_url].join('/')
       elsif homepage?
         '/'
-      else
-        '/' + slug_builder.to_url
       end
-    end
-
-    def homepage?
-      BlueberryCMS::Page.first == self
     end
   end
 end
