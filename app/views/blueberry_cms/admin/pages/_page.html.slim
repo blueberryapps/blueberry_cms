@@ -1,29 +1,33 @@
-tr
-  td
-    => '–' * page.depth
-    = page.name
-  td = page.to_path
-  td
-    - if page.show_in_menu
-      i.glyphicon.glyphicon-ok
-    - else
-      i.glyphicon.glyphicon-remove
+li data-id=page.id
+  .row.page-row
+    .col-md-1
+      i.glyphicon.glyphicon-resize-vertical
+    .col-md-3
+      => '–' * page.depth
+      = page.name
+    .col-md-3 = page.to_path
+    .col-md-1
+      - if page.show_in_menu
+        i.glyphicon.glyphicon-ok
+      - else
+        i.glyphicon.glyphicon-remove
 
-  td
-    = link_to page.to_path, target: :_blank, class: 'btn btn-sm btn-secondary'
-      i.glyphicon.glyphicon-eye-open
-      = t('.preview')
-    '
-    = link_to [:new, :admin, :page, parent_id: page.id], class: 'btn btn-sm btn-primary'
-      i.glyphicon.glyphicon-plus
-      = t('.new_child')
-    '
-    = link_to [:edit, :admin, page], class: 'btn btn-sm btn-primary'
-      i.glyphicon.glyphicon-pencil
-      = t('blueberry_cms.admin.common.edit')
-    '
-    = link_to [:admin, page], method: :delete, class: 'btn btn-sm btn-warning'
-      i.glyphicon.glyphicon-remove
-      = t('blueberry_cms.admin.common.destroy')
+    .col-md-4
+      = link_to page.to_path, target: :_blank, class: 'btn btn-sm btn-secondary'
+        i.glyphicon.glyphicon-eye-open
+        = t('.preview')
+      '
+      = link_to [:new, :admin, :page, parent_id: page.id], class: 'btn btn-sm btn-primary'
+        i.glyphicon.glyphicon-plus
+        = t('.new_child')
+      '
+      = link_to [:edit, :admin, page], class: 'btn btn-sm btn-primary'
+        i.glyphicon.glyphicon-pencil
+        = t('blueberry_cms.admin.common.edit')
+      '
+      = link_to [:admin, page], method: :delete, class: 'btn btn-sm btn-warning'
+        i.glyphicon.glyphicon-remove
+        = t('blueberry_cms.admin.common.destroy')
 
-= render partial: 'page', collection: page.children, as: :page if page.children.any?
+  - if page.children.any?
+    ul.pages = render partial: 'page', collection: page.children, as: :page
