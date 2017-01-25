@@ -12,12 +12,8 @@ module BlueberryCMS
       ]
     end
 
-    def form_fields(form)
-      raise NotImplementedError
-    end
-
-    def render
-      raise NotImplementedError
+    def to_partial_path
+      "page_blocks/#{self.class.name.demodulize.downcase}"
     end
   end
 end
