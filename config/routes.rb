@@ -3,8 +3,7 @@ BlueberryCMS::Engine.routes.draw do
     resources :pages
   end
 
-  get ':locale',       to: 'pages#show',  as: :root
-  get ':locale/*path', to: 'pages#show',  as: :page
+  get ':locale/(*path)', to: 'pages#show', as: :page
 
   root to: 'root#index'
 end

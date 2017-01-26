@@ -6,25 +6,31 @@ cs:
           remove: Odebrat blok
         edit:
           title: Upravit stránku
+        empty:
+          no_pages: Nebyly nalezeny žádné stránky
         form:
           add: Přidat %{type}
-          submit: Uložit stránku
           blocks: Bloky
+          submit: Uložit stránku
         index:
-          title: Seznam stránek
           list: Stránky
           new: Přidat stránku
-          new_child: Přidat podstránku
+          title: Seznam stránek
         new:
           title: Vytvořit stránku
+        page:
+          new_child: Přidat podstránku
+          preview: Náhled
       common:
         back: Zpět
-        edit: Upravit
         destroy: Smazat
+        edit: Upravit
+        you_sure: "Jste si jistý/á?"
   mongoid:
     attributes:
       'blueberry_cms/page':
-        path: Url adresa
-        parent: Rodič
-        slug: Slug
         name: Název
+        parent: Rodič
+        path: Url adresa
+        show_in_menu: V hlavním menu
+        slug: Slug
