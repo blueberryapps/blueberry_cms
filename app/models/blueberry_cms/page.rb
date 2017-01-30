@@ -16,7 +16,7 @@ module BlueberryCMS
     field :published_at,     type: DateTime
     field :show_in_menu,     type: Boolean
 
-    embeds_many :blocks, class_name: 'BlueberryCMS::PageBlock'
+    embeds_many :blocks, class_name: 'BlueberryCMS::PageBlock', cascade_callbacks: true, order: :position.asc
 
     slug :name, localize: true
 

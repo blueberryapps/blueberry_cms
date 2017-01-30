@@ -52,21 +52,7 @@ module BlueberryCMS
       private
 
       def page_params
-        params.
-          require(:page).
-          permit(
-            :parent_id, :show_in_menu, :position,
-            slug_translations: [:cs, :en],
-            meta_title_translations: [:cs, :en],
-            meta_description_translations: [:cs, :en],
-            meta_keywords_translations: [:cs, :en],
-            name_translations: [:cs, :en],
-            blocks_attributes: [
-              :_destroy, :id, :_type, :urls,
-              page_ids: [],
-              content_translations: [:cs, :en]
-            ]
-          )
+        params.require(:page).permit!
       end
     end
   end
