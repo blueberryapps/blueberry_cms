@@ -4,4 +4,4 @@
     = f.simple_fields_for :content_translations do |localized_field|
       - I18n.available_locales.map do |locale|
         div class="col-md-#{size}"
-          = localized_field.input locale, input_html: { value: text.content_translations[locale] }
+          = localized_field.input locale, input_html: { value: text.content_translations[locale] }, as: :text
