@@ -1,1 +1,2 @@
-= gallery.urls
+- gallery.images.each do |image|
+  = image_tag image.image.url(:small)

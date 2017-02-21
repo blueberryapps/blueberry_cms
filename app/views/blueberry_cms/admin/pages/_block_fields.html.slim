@@ -1,4 +1,7 @@
-.nested-fields
+.row.nested-fields
   = f.input :_type, as: :hidden
-  = render f.object, f: f
-  = link_to_remove_association t('.remove'), f
+  .col-md-1
+    i.glyphicon.glyphicon-resize-vertical
+    = f.input :position, as: :hidden
+  .col-md-10 = render f.object, f: f
+  .col-md-1 = link_to_remove_association t('.remove'), f

@@ -1,1 +1,5 @@
-= f.input :urls, input_html: { value: gallery.urls.join(', ') }
+.images
+  = f.simple_fields_for :images do |image|
+    = render 'blueberry_cms/admin/page_blocks/gallery_images_fields', f: image
+.link
+  = f.input :new_image, as: :file, input_html: { multiple: true }
