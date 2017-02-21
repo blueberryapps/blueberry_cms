@@ -16,7 +16,9 @@ module BlueberryCMS
     field :published_at,     type: DateTime
     field :show_in_menu,     type: Boolean
 
-    embeds_many :blocks, class_name: 'BlueberryCMS::PageBlock', cascade_callbacks: true, order: :position.asc
+    embeds_many :blocks, class_name:        'BlueberryCMS::PageBlock',
+                         cascade_callbacks: true,
+                         order:             :position.asc
 
     slug :name, localize: true
 
@@ -24,10 +26,8 @@ module BlueberryCMS
 
     validates :path, uniqueness: true
 
-    before_destroy :ensure_root
+    before_destroy :ensure_root, :move_children_to_parent
     after_rearrange :rebuild_path
-
-    before_destroy :move_children_to_parent
 
     scope :in_menu, -> { where(show_in_menu: true) }
 
