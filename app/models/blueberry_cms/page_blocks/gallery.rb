@@ -5,12 +5,11 @@ module BlueberryCMS
 
       accepts_nested_attributes_for :images, allow_destroy: true
 
-      def new_image
-      end
+      attr_reader :images_files
 
-      def new_image=(uploaded_images)
-        Array(uploaded_images).each do |uploaded_image|
-          images.build(image: uploaded_image)
+      def images_files=(files)
+        Array(files).each do |file|
+          images.build(image: file)
         end
       end
     end

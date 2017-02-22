@@ -1,3 +1,10 @@
-.nested-fields
-  = image_tag f.object.image.url(:small)
+.nested-fields.col-md-3
+  = image_tag f.object.image.url(:thumb)
+
+  = f.input :name
+    .row
+      = f.simple_fields_for :name_translations do |localized_field|
+        - I18n.available_locales.each do |locale|
+            .col-md-6 = localized_field.input locale, input_html: { value: f.object.name_translations[locale] }
+
   = link_to_remove_association t('.remove'), f

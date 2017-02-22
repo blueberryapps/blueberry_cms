@@ -1,4 +1,4 @@
-$:.push File.expand_path('../lib', __FILE__)
+$LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 # Maintain your gem's version:
 require 'blueberry_cms/version'
@@ -16,12 +16,13 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", 'MIT-LICENSE', 'Rakefile', 'README.md']
 
+  s.add_dependency 'carrierwave'
+  s.add_dependency 'carrierwave-mongoid'
   s.add_dependency 'cocoon'
   s.add_dependency 'liquid'
   s.add_dependency 'mongoid'
   s.add_dependency 'mongoid-slug'
   s.add_dependency 'mongoid-tree'
-  s.add_dependency 'mongoid-paperclip'
   s.add_dependency 'rails', '~> 5.0.1'
   s.add_dependency 'rails-assets-voidberg--html5sortable'
   s.add_dependency 'redcarpet'
