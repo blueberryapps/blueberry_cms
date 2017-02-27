@@ -1,5 +1,5 @@
-.images
+.row.images
   = f.simple_fields_for :images do |image|
     = render 'blueberry_cms/admin/page_blocks/gallery_images_fields', f: image
-.link
-  = f.input :new_image, as: :file, input_html: { multiple: true }
+.link.col-md-3
+  = f.input :images_files, as: :file, input_html: { multiple: true }
