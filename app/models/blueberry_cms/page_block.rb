@@ -1,6 +1,7 @@
 module BlueberryCMS
   class PageBlock
     include Mongoid::Document
+    include Mongoid::Attributes::Dynamic
 
     field :position, type: Integer
 
@@ -12,6 +13,8 @@ module BlueberryCMS
         BlueberryCMS::PageBlocks::Gallery,
         BlueberryCMS::PageBlocks::RichText
       ] + BlueberryCMS.custom_blocks
+
+      pp @types
     end
 
     def to_partial_path
