@@ -9,12 +9,9 @@ module BlueberryCMS
 
     def self.types
       @types ||= [
-        BlueberryCMS::PageBlocks::Text,
         BlueberryCMS::PageBlocks::Gallery,
         BlueberryCMS::PageBlocks::RichText
       ] + BlueberryCMS.custom_blocks
-
-      pp @types
     end
 
     def to_partial_path
