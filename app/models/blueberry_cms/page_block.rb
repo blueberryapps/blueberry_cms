@@ -1,6 +1,7 @@
 module BlueberryCMS
   class PageBlock
     include Mongoid::Document
+    include Mongoid::Attributes::Dynamic
 
     field :position, type: Integer
 
@@ -8,7 +9,6 @@ module BlueberryCMS
 
     def self.types
       @types ||= [
-        BlueberryCMS::PageBlocks::Text,
         BlueberryCMS::PageBlocks::Gallery,
         BlueberryCMS::PageBlocks::RichText
       ] + BlueberryCMS.custom_blocks
