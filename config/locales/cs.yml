@@ -25,8 +25,14 @@ cs:
         back: Zpět
         destroy: Smazat
         edit: Upravit
+        preview: Náhled
+        save_and_continue: Uložit a pokračovat
         you_sure: "Jste si jistý/á?"
   mongoid:
+    models:
+      'blueberry_cms/page': stránku
+      'blueberry_cms/page_blocks/gallery': galerii
+      'blueberry_cms/page_blocks/rich_text': text blok
     attributes:
       'blueberry_cms/page':
         name: Název

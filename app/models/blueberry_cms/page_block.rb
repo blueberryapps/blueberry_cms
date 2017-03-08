@@ -4,6 +4,7 @@ module BlueberryCMS
     include Mongoid::Attributes::Dynamic
 
     field :position, type: Integer
+    field :css_class
 
     embedded_in :page
 
