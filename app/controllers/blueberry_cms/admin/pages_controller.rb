@@ -15,7 +15,7 @@ module BlueberryCMS
       def create
         @page = Page.new(page_params)
         if @page.save
-          redirect_to [:admin, :pages]
+          redirect_to(params[:continue] ? [:edit, :admin, @page] : [:admin, :pages])
         else
           render :new
         end
@@ -29,7 +29,9 @@ module BlueberryCMS
         @page = Page.find(params[:id])
         if @page.update_attributes(page_params)
           respond_to do |format|
-            format.html { redirect_to [:admin, :pages] }
+            format.html {
+              redirect_to(params[:continue] ? [:edit, :admin, @page] : [:admin, :pages])
+            }
             format.js   { head :ok }
           end
         else

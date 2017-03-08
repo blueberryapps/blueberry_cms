@@ -12,3 +12,4 @@
         .for-horizontal-form
           = link_to t('blueberry_cms.admin.common.back'), [:admin, :pages], class: 'btn btn-default'
           = f.button :submit, class: 'btn btn-primary'
+          = f.button :submit, t('blueberry_cms.admin.common.save_and_continue'), class: 'btn btn-success', name: :continue
