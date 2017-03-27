@@ -15,6 +15,7 @@ module BlueberryCMS
     field :path,             localize: true
     field :published_at,     type: DateTime
     field :show_in_menu,     type: Boolean
+    field :show_in_footer,   type: Boolean
 
     embeds_many :blocks, class_name:        'BlueberryCMS::PageBlock',
                          cascade_callbacks: true,
@@ -29,7 +30,8 @@ module BlueberryCMS
     before_destroy :ensure_root, :move_children_to_parent
     after_rearrange :rebuild_path
 
-    scope :in_menu, -> { where(show_in_menu: true) }
+    scope :in_menu,   -> { where(show_in_menu: true) }
+    scope :in_footer, -> { where(show_in_footer: true) }
 
     def to_path
       "/#{I18n.locale}#{path}"
