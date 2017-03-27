@@ -12,6 +12,11 @@ li data-id=page.id
       - else
         i.glyphicon.glyphicon-remove
 
+      - if page.show_in_footer
+        i.glyphicon.glyphicon-ok
+      - else
+        i.glyphicon.glyphicon-remove
+
     .col-md-4
       = link_to page.to_path, target: :_blank, class: 'btn btn-sm btn-secondary'
         i.glyphicon.glyphicon-eye-open

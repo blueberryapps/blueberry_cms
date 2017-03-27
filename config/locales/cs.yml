@@ -38,5 +38,6 @@ cs:
         name: Název
         parent: Rodič
         path: Url adresa
+        show_in_footer: V patičce
         show_in_menu: V hlavním menu
         slug: Slug
