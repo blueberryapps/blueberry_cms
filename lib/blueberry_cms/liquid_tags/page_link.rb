@@ -9,7 +9,9 @@ module BlueberryCMS
 
       def render(context)
         page = Page.find(@options[:id])
-        context['h'].link_to @options[:title].presence || page.name, page.to_path
+        context['h'].link_to(@options[:title].presence || page.name,
+                             page.to_path,
+                             class: @options[:class].presence)
       end
     end
 
