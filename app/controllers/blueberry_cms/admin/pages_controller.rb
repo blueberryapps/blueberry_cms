@@ -1,7 +1,10 @@
 module BlueberryCMS
   module Admin
     class PagesController < BlueberryCMS.page_admin_controller.constantize
+      include Wisper::Publisher
       helper BlueberryCMS::PagesHelper
+
+      after_action :refresh_sitemap, only: %i(update create destroy)
 
       def index
         @pages = Page.roots
@@ -55,6 +58,10 @@ module BlueberryCMS
 
       def page_params
         params.require(:page).permit!
+      end
+
+      def refresh_sitemap
+        broadcast(:refresh_sitemap)
       end
     end
   end

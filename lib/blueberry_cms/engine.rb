@@ -9,6 +9,7 @@ require 'rails-assets-voidberg--html5sortable'
 require 'redcarpet'
 require 'simple_form'
 require 'slim-rails'
+require 'wisper'
 
 module BlueberryCMS
   class Engine < ::Rails::Engine
