@@ -7,7 +7,7 @@ require 'blueberry_cms/version'
 Gem::Specification.new do |s|
   s.name        = 'blueberry_cms'
   s.version     = BlueberryCMS::VERSION
-  s.authors     = ['Martin Magnusek', 'Antonín Pleskač']
+  s.authors     = ['Martin Magnusek', 'Antonín Pleskač', 'Michal Gritzbach']
   s.email       = ['magnusekm@gmail.com']
   s.homepage    = 'http://github.com/blueberry/blueberry_cms'
   s.summary     = 'Summary of BlueberryCMS.'
@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 5.0'
   s.add_dependency 'rails-assets-voidberg--html5sortable', '0.4.4'
   s.add_dependency 'redcarpet'
+  s.add_dependency 'request_store'
   s.add_dependency 'simple_form'
   s.add_dependency 'slim-rails'
   s.add_dependency 'wisper', '~> 2.0.0'

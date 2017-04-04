@@ -2,6 +2,7 @@ module BlueberryCMS
   class PageBlock
     include Mongoid::Document
     include Mongoid::Attributes::Dynamic
+    include BlueberryCMS::Scopable
 
     field :position, type: Integer
     field :css_class
