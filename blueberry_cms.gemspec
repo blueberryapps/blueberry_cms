@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mongoid'
   s.add_dependency 'mongoid-slug'
   s.add_dependency 'mongoid-tree'
-  s.add_dependency 'rails', '~> 5.0.1'
+  s.add_dependency 'rails', '~> 5.0'
   s.add_dependency 'rails-assets-voidberg--html5sortable'
   s.add_dependency 'redcarpet'
   s.add_dependency 'simple_form'
