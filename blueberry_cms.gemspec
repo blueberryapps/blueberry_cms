@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mongoid-slug'
   s.add_dependency 'mongoid-tree'
   s.add_dependency 'rails', '~> 5.0'
-  s.add_dependency 'rails-assets-voidberg--html5sortable'
+  s.add_dependency 'rails-assets-voidberg--html5sortable', '0.4.4'
   s.add_dependency 'redcarpet'
   s.add_dependency 'simple_form'
   s.add_dependency 'slim-rails'
