@@ -26,6 +26,7 @@ module BlueberryCMS
     accepts_nested_attributes_for :blocks, allow_destroy: true
 
     validates :path, uniqueness: true
+    validates :name, presence: true
 
     before_destroy :ensure_root, :move_children_to_parent
     after_rearrange :rebuild_path
@@ -49,7 +50,7 @@ module BlueberryCMS
     def rebuild_path
       self.path_translations = I18n.available_locales.each_with_object({}) do |locale, translations|
         I18n.with_locale(locale) do
-          translations[locale] = generate_path if name_translations[locale].present?
+          translations[locale] = generate_path
         end
       end
     end
