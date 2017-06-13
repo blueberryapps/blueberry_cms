@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    blueberry_cms (0.1.0.4)
+    blueberry_cms (0.1.0.6)
       carrierwave
       carrierwave-mongoid
       cocoon
