@@ -6,7 +6,7 @@ module BlueberryCMS
     field :image_processing, type: Boolean, default: false
 
     mount_uploader :image, ImageUploader
-    process_in_background :image if ::CarrierWave::Backgrounder.backend
+    store_in_background :image if ::CarrierWave::Backgrounder.backend
 
     def self.find(id)
       _id = BSON::ObjectId.from_string(id)
