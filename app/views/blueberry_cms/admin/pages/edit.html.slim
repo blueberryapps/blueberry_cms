@@ -1,14 +1,14 @@
 = simple_form_for [:admin, @page] do |f|
   .content-header
     h1
-      span.glyphicon.glyphicon-user
+      span.glyphicon.glyphicon-file
       span.text =< t '.title'
 
   .content
     .box
       .box-content
         = render 'form', f: f
-      .box-footer
+      .box-footer.sticky data-sticky='bottom'
         .for-horizontal-form
           = link_to t('blueberry_cms.admin.common.preview'), @page.to_path, target: :_blank, class: 'btn btn-default'
           = link_to t('blueberry_cms.admin.common.back'), [:admin, :pages], class: 'btn btn-default'

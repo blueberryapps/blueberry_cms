@@ -1,38 +1,40 @@
 li data-id=page.id
-  .row.page-row
-    .col-md-1
+  .pages-tree__row
+    .col-icon
       i.glyphicon.glyphicon-resize-vertical
-    .col-md-3
-      => '–' * page.depth
-      = page.name
-    .col-md-3 = page.to_path
-    .col-md-1
+    .col-name
+      => link_to [:edit, :admin, page]
+        strong = page.name
+        span<
+          i.glyphicon.glyphicon-pencil
+          =< t('.edit')
+    .col-info
       - if page.show_in_menu
-        i.glyphicon.glyphicon-ok
+        i.glyphicon.glyphicon-ok title=t('.show_in_menu')
       - else
-        i.glyphicon.glyphicon-remove
+        i.glyphicon.glyphicon-remove title=t('.hide_in_menu')
 
       - if page.show_in_footer
-        i.glyphicon.glyphicon-ok
+        i.glyphicon.glyphicon-ok title=t('.show_in_footer')
       - else
-        i.glyphicon.glyphicon-remove
+        i.glyphicon.glyphicon-remove title=t('.hide_in_footer')
 
-    .col-md-4
+    .col-actions
       = link_to page.to_path, target: :_blank, class: 'btn btn-sm btn-secondary'
         i.glyphicon.glyphicon-eye-open
         = t('.preview')
       '
-      = link_to [:new, :admin, :page, parent_id: page.id], class: 'btn btn-sm btn-primary'
+      = link_to [:new, :admin, :page, parent_id: page.id], class: 'btn btn-sm btn-default'
         i.glyphicon.glyphicon-plus
         = t('.new_child')
       '
-      = link_to [:edit, :admin, page], class: 'btn btn-sm btn-primary'
-        i.glyphicon.glyphicon-pencil
-        = t('blueberry_cms.admin.common.edit')
-      - unless page.root?
-        '
-        = link_to [:admin, page], method: :delete, class: 'btn btn-sm btn-warning', data: { confirm: t('blueberry_cms.admin.common.you_sure') }
 
+      - if !page.root?
+        = link_to [:admin, page], method: :delete, class: 'btn btn-sm btn-default', data: { confirm: t('blueberry_cms.admin.common.you_sure') }
+          i.glyphicon.glyphicon-remove
+          = t('blueberry_cms.admin.common.destroy')
+      - else
+        = link_to '#', method: :delete, class: 'btn btn-sm btn-default', data: { confirm: t('blueberry_cms.admin.common.you_sure') }, disabled: true
           i.glyphicon.glyphicon-remove
           = t('blueberry_cms.admin.common.destroy')
 

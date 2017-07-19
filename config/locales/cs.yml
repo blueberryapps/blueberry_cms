@@ -3,6 +3,7 @@ cs:
     admin:
       pages:
         block_fields:
+          collapse: Collapse
           remove: Odebrat blok
         edit:
           title: Upravit stránku
@@ -21,6 +22,10 @@ cs:
         page:
           new_child: Přidat podstránku
           preview: Náhled
+          show_in_menu: "Zobrazeno v menu"
+          hide_in_menu: "Skryto v menu"
+          hide_in_footer: "Skryto v patičce"
+          show_in_footer: "Zobrazeno v patičce"
       common:
         back: Zpět
         destroy: Smazat

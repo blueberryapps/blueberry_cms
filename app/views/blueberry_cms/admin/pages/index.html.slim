@@ -1,6 +1,6 @@
 .content-header
   h1
-    span.glyphicon.glyphicon-user
+    span.glyphicon.glyphicon-file
     span.text =< t '.title'
 
   ol.breadcrumb
@@ -20,6 +20,6 @@
 
     .box-content
       - if @pages.any?
-        ul.pages.page-tree data-url=admin_pages_path = render partial: 'page', collection: @pages, as: :page
+        ul.pages.pages-tree data-url=admin_pages_path = render partial: 'page', collection: @pages, as: :page
       - else
         = render 'empty'
