@@ -1,0 +1,16 @@
+li data-id=menu.id
+  .pages-tree__row
+    .col-icon
+      i.glyphicon.glyphicon-resize-vertical
+    .col-name
+      => link_to [:edit, :admin, menu]
+        strong = menu.name
+        span<
+          i.glyphicon.glyphicon-pencil
+          =< t('.edit')
+
+    .col-actions
+      = link_to [:admin, menu], method: :delete, class: 'btn btn-sm btn-default', data: { confirm: t('blueberry_cms.admin.common.you_sure') }
+        i.glyphicon.glyphicon-remove
+        = t('blueberry_cms.admin.common.destroy')
+

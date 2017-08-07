@@ -1,0 +1,23 @@
+.row.nested-fields
+  .panel.panel-default
+    .panel-heading
+      .row
+        .col-sm-6
+          - unless f.object.new_record?
+            i.glyphicon.glyphicon-resize-vertical
+            = f.input :position, as: :hidden
+        .col-sm-6.text-right
+          .panel-actions
+            - unless f.object.new_record?
+              = link_to "#toggle-#{f.object_id}", data: {toggle: 'collapse'}, aria: {expanded: 'true'}
+                i.glyphicon.glyphicon-resize-small title=t('.collapse')
+            = link_to_remove_association f
+              i.glyphicon.glyphicon-trash title=t('.remove')
+    .collapse.in id="toggle-#{f.object_id}"
+      .panel-body
+        = f.input :css_class
+        = f.input :anchor
+        = f.input :name
+        = f.input :url
+        = f.input :page_id, collection: nested_set_options(BlueberryCMS::Page)
+
