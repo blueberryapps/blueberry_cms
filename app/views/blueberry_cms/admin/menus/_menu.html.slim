@@ -9,8 +9,10 @@ li data-id=menu.id
           i.glyphicon.glyphicon-pencil
           =< t('.edit')
 
+    .col-name
+      pre = "= render_menu('#{menu.slug}')"
+
     .col-actions
       = link_to [:admin, menu], method: :delete, class: 'btn btn-sm btn-default', data: { confirm: t('blueberry_cms.admin.common.you_sure') }
         i.glyphicon.glyphicon-remove
         = t('blueberry_cms.admin.common.destroy')
-
