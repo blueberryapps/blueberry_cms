@@ -2,9 +2,10 @@ module BlueberryCMS
   module Admin
     class MenusController < BlueberryCMS.page_admin_controller.constantize
       helper BlueberryCMS::PagesHelper
+      before_action :find_menu, only: %i(edit update destroy)
 
       def index
-        @menus = Menu.all
+        @menus = Menu.ordered
       end
 
       def new
@@ -20,13 +21,10 @@ module BlueberryCMS
         end
       end
 
-      def edit
-        @menu = Menu.find(params[:id])
-      end
+      def edit; end
 
       def update
-        @menu = Menu.find(params[:id])
-        if @menu.update_attributes(menu_params)
+        if @menu.update(menu_params)
            redirect_to(params[:continue] ? [:edit, :admin, @menu] : [:admin, :menus])
         else
           render :edit
@@ -34,7 +32,6 @@ module BlueberryCMS
       end
 
       def destroy
-        @menu = Menu.find(params[:id])
         @menu.destroy
         redirect_to [:admin, :menus]
       end
@@ -45,6 +42,9 @@ module BlueberryCMS
         params.require(:menu).permit!
       end
 
+      def find_menu
+        @menu = Menu.find(params[:id])
+      end
     end
   end
 end

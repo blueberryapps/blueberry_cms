@@ -9,9 +9,9 @@ module BlueberryCMS
 
     def link(link)
       if link.page
-        link_to link.page.name, link.page.to_path, class: link.css_class.presence, anchor: link.anchor.presence
+        link_to link.page.name, anchored_link(link.page.to_path, link.anchor.presence), class: link.css_class.presence
       else
-        link_to link.name, link.url, class: link.css_class.presence, anchor: link.anchor.presence
+        link_to link.name, anchored_link(link.url, link.anchor.presence), class: link.css_class.presence
       end
     end
 
@@ -19,6 +19,10 @@ module BlueberryCMS
       links.map do |link|
         content_tag(:li, link(link))
       end
+    end
+
+    def anchored_link(link, anchor)
+      [link, anchor.presence].compact.join('#')
     end
   end
 end

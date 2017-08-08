@@ -10,9 +10,9 @@
           .panel-actions
             - unless f.object.new_record?
               = link_to "#toggle-#{f.object_id}", data: {toggle: 'collapse'}, aria: {expanded: 'true'}
-                i.glyphicon.glyphicon-resize-small title=t('.collapse')
+                i.glyphicon.glyphicon-resize-small title=t('blueberry_cms.admin.common.collapse')
             = link_to_remove_association f
-              i.glyphicon.glyphicon-trash title=t('.remove')
+              i.glyphicon.glyphicon-trash title=t('blueberry_cms.admin.common.remove')
     .collapse.in id="toggle-#{f.object_id}"
       .panel-body
         = f.input :_type, as: :hidden

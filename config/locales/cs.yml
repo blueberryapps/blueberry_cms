@@ -2,9 +2,6 @@ cs:
   blueberry_cms:
     admin:
       pages:
-        block_fields:
-          collapse: Collapse
-          remove: Odebrat blok
         edit:
           title: Upravit stránku
         empty:
@@ -28,9 +25,11 @@ cs:
           show_in_footer: "Zobrazeno v patičce"
       common:
         back: Zpět
+        collapse: Collapse
         destroy: Smazat
         edit: Upravit
         preview: Náhled
+        remove: Odebrat blok
         save_and_continue: Uložit a pokračovat
         you_sure: "Jste si jistý/á?"
   mongoid:

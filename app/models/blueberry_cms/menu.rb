@@ -13,5 +13,7 @@ module BlueberryCMS
                          order:             :position.asc
 
     accepts_nested_attributes_for :links, allow_destroy: true
+
+    scope :ordered, -> { order(name: :asc) }
   end
 end
