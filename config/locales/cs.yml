@@ -17,6 +17,7 @@ cs:
         new:
           title: Vytvořit stránku
         page:
+          edit: Upravit
           new_child: Přidat podstránku
           preview: Náhled
           show_in_menu: "Zobrazeno v menu"
@@ -24,6 +25,7 @@ cs:
           hide_in_footer: "Skryto v patičce"
           show_in_footer: "Zobrazeno v patičce"
       common:
+        home: Home
         back: Zpět
         collapse: Collapse
         destroy: Smazat
@@ -32,12 +34,30 @@ cs:
         remove: Odebrat blok
         save_and_continue: Uložit a pokračovat
         you_sure: "Jste si jistý/á?"
+      menus:
+        edit:
+          title: Editace menu
+        form:
+          add: Přidat
+        index:
+          title: Seznam menu
+          list: Menu
+          new: Nový
+        menu:
+          edit: Upravit
   mongoid:
     models:
       'blueberry_cms/page': stránku
       'blueberry_cms/page_blocks/gallery': galerii
       'blueberry_cms/page_blocks/rich_text': text blok
     attributes:
+      'blueberry_cms/menu_link':
+        anchor: Kotva
+        css_class: Css class
+        name: Jméno
+        page_id: ID
+        position: Pozice
+        url: URL
       'blueberry_cms/page':
         name: Název
         parent: Rodič
