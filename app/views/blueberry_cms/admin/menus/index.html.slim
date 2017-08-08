@@ -1,0 +1,26 @@
+.content-header
+  h1
+    span.glyphicon.glyphicon-file
+    span.text =< t '.title'
+
+  ol.breadcrumb
+    li = link_to t('admin.common.home'), main_app.admin_root_path
+    li.active
+      strong =< t '.title'
+
+.content
+  .box
+    .box-header
+      .heading
+        h3 = t('.list')
+      .actions
+
+        = link_to [:new, :admin, :menu], class: 'btn btn-primary'
+          .glyphicon.glyphicon-plus
+          = t('.new')
+
+    .box-content
+      - if @menus.any?
+        ul.pages.pages-tree = render partial: 'menu', collection: @menus, as: :menu
+      - else
+        = render 'empty'

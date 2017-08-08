@@ -1,0 +1,15 @@
+= simple_form_for [:admin, @menu] do |f|
+  .content-header
+    h1
+      span.glyphicon.glyphicon-user
+      span.text =< t '.title'
+
+  .content
+    .box
+      .box-content
+        = render 'form', f: f
+      .box-footer
+        .for-horizontal-form
+          = link_to t('blueberry_cms.admin.common.back'), [:admin, :menus], class: 'btn btn-default'
+          = f.button :submit, class: 'btn btn-primary'
+          = f.button :submit, t('blueberry_cms.admin.common.save_and_continue'), class: 'btn btn-success', name: :continue

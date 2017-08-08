@@ -1,6 +1,7 @@
 BlueberryCMS::Engine.routes.draw do
   namespace :admin do
     resources :pages
+    resources :menus, except: :show
   end
 
   scope '/:locale', locale: Regexp.new(I18n.available_locales.join('|')) do

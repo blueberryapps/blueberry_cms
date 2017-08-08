@@ -15,5 +15,10 @@
               i.glyphicon.glyphicon-trash title=t('blueberry_cms.admin.common.remove')
     .collapse.in id="toggle-#{f.object_id}"
       .panel-body
-        = f.input :_type, as: :hidden
-        = render f.object, f: f
+        .row
+          .col-sm-4.col-lg-3 = f.input :page_id, collection: nested_set_options(BlueberryCMS::Page)
+          .col-sm-4.col-lg-2 = f.input :name
+          .col-sm-4.col-lg-3 = f.input :url
+          .col-sm-4.col-lg-2 = f.input :css_class
+          .col-sm-4.col-lg-2 = f.input :anchor
+

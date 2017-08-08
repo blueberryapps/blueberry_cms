@@ -1,0 +1,6 @@
+= f.input :name
+#blocks data-url=admin_menus_path
+  = f.simple_fields_for :links do |link|
+    = render 'link_fields', f: link
+
+  .links =< link_to_add_association t('.add'), f, :links, class: 'btn btn-primary'

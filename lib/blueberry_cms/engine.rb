@@ -14,5 +14,8 @@ require 'wisper'
 module BlueberryCMS
   class Engine < ::Rails::Engine
     isolate_namespace BlueberryCMS
+    config.to_prepare do
+      ApplicationController.helper(MenusHelper)
+    end
   end
 end
