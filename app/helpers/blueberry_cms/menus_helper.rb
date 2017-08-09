@@ -9,9 +9,9 @@ module BlueberryCMS
 
     def link(link)
       if link.page
-        link_to link.page.name, anchored_link(link.page.to_path, link.anchor.presence), class: link.css_class.presence
+        active_link_to link.page.name, anchored_link(link.page.to_path, link.anchor.presence), class: link.css_class.presence, active: :exclusive
       else
-        link_to link.name, anchored_link(link.url, link.anchor.presence), class: link.css_class.presence
+        active_link_to link.name, anchored_link(link.url, link.anchor.presence), class: link.css_class.presence, active: :exclusive
       end
     end
 
