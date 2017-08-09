@@ -8,11 +8,10 @@ module BlueberryCMS
     private
 
     def link(link)
-      if link.page
-        active_link_to link.page.name, anchored_link(link.page.to_path, link.anchor.presence), class: link.css_class.presence, active: :exclusive
-      else
-        active_link_to link.name, anchored_link(link.url, link.anchor.presence), class: link.css_class.presence, active: :exclusive
-      end
+      name = link.name.presence || link.page.name
+      url = link.page&.to_path || link.url
+
+      active_link_to name, anchored_link(url, link.anchor.presence), class: link.css_class.presence, active: :exclusive
     end
 
     def menu_links(links)
