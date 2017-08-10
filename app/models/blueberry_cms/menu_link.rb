@@ -2,12 +2,13 @@ module BlueberryCMS
   class MenuLink
     include Mongoid::Document
 
-    field :anchor
+    field :anchor,     localize: true
     field :css_class
-    field :name
-    field :page_id,  type: BSON::ObjectId
-    field :position, type: Integer
-    field :url,      type: String
+    field :name,       localize: true
+    field :page_id,    type: BSON::ObjectId
+    field :position,   type: Integer
+    field :new_window, type: Boolean
+    field :url,        type: String, localize: true
 
     embedded_in :menu, class_name: 'BlueberryCMS::Menu'
 
