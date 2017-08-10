@@ -17,8 +17,14 @@
       .panel-body
         .row
           .col-sm-4.col-lg-3 = f.input :page_id, collection: nested_set_options(BlueberryCMS::Page)
-          .col-sm-4.col-lg-2 = f.input :name
-          .col-sm-4.col-lg-3 = f.input :url
+          = f.simple_fields_for :name_translations do |localized_field|
+            - I18n.available_locales.map do |locale|
+              .col-sm-4.col-lg-2 = localized_field.input locale, label: "#{locale} #{t('mongoid.attributes.blueberry_cms/menu_link.name')}", input_html: { value: f.object.name_translations[locale] }
+          = f.simple_fields_for :url_translations do |localized_field|
+            - I18n.available_locales.map do |locale|
+              .col-sm-4.col-lg-2 = localized_field.input locale, label: "#{locale} #{t('mongoid.attributes.blueberry_cms/menu_link.url')}", input_html: { value: f.object.url_translations[locale] }
           .col-sm-4.col-lg-2 = f.input :css_class
-          .col-sm-4.col-lg-2 = f.input :anchor
-
+          = f.simple_fields_for :anchor_translations do |localized_field|
+            - I18n.available_locales.map do |locale|
+              .col-sm-4.col-lg-2 = localized_field.input locale, label: "#{locale} #{t('mongoid.attributes.blueberry_cms/menu_link.anchor')}", input_html: { value: f.object.anchor_translations[locale] }
+          .col-sm-4.col-lg-2 = f.input :new_window, as: :boolean

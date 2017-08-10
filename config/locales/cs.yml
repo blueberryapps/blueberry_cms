@@ -58,6 +58,7 @@ cs:
         page_id: ID
         position: Pozice
         url: URL
+        target: Otevřít v novém okně
       'blueberry_cms/page':
         name: Název
         parent: Rodič

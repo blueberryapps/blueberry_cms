@@ -11,7 +11,7 @@ module BlueberryCMS
       name = link.name.presence || link.page.name
       url = link.page&.to_path || link.url
 
-      active_link_to name, anchored_link(url, link.anchor.presence), class: link.css_class.presence, active: :exclusive
+      active_link_to name, anchored_link(url, link.anchor.presence), class: link.css_class.presence, active: :exclusive, target: link.new_window ? '_blank' : '_self'
     end
 
     def menu_links(links)
