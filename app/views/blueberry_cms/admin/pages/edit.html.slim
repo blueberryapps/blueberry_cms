@@ -7,7 +7,12 @@
   .content
     .box
       .box-content
-        = render 'form', f: f
+        .multilingual-tabs-section
+          - I18n.available_locales.each do |locale|
+            input type="radio" id="#{locale}-tab" class="#{locale}-tab" name="lang-tabs" checked=(locale == I18n.default_locale)
+            label.tab-label for="#{locale}-tab" = locale
+          .multilingual-content-section
+            = render 'form', f: f
       .box-footer.sticky data-sticky='bottom'
         .for-horizontal-form
           = link_to t('blueberry_cms.admin.common.preview'), @page.to_path, target: :_blank, class: 'btn btn-default'

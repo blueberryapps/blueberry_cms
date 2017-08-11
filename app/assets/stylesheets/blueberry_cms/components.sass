@@ -1,0 +1,35 @@
+.form-layout
+  .form-group
+    display: flex
+    align-items: flex-start
+    +render-to(xs, ms)
+      display: block
+
+    label
+      min-width: rem(220)
+      margin-top: rem(13)
+      text-align: right
+      +render-to(xs, ms)
+        width: 100%
+        min-width: auto
+        text-align: left
+
+    .form-control-wrapper
+      margin-left: rem(15)
+      margin-right: 25%
+      flex-grow: 2
+      +render-to(xs, ms, sm, md)
+        margin-right: 0
+
+      +render-to(xs, ms)
+        margin-left: 0
+
+      .form-control-wrapper
+        margin-right: 0
+        margin-left: 0
+
+.box-footer
+  text-align: right
+
+  .for-horizontal-form
+    padding-left: 0

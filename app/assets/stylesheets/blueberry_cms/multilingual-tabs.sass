@@ -1,0 +1,41 @@
+.multilingual-tabs-section
+  .tab-content,
+  input[type="radio"]
+    display: none
+
+  .tab-label
+    position: relative
+    padding: 10px 15px
+    margin-bottom: -1px
+    margin-right: 2px
+    text-transform: uppercase
+    font-weight: normal
+    line-height: 20px
+    display: inline-block
+    color: #1aabd5
+    cursor: pointer
+    border-radius: rem(4) rem(4) 0 0
+    border: 1px solid transparent;
+
+    &:hover
+      border-color: #dcdcdc #dcdcdc #ddd;
+      color: #444;
+      background: #f7f7f7;
+      border: 1px solid #ddd;
+      border-bottom-color: transparent;
+
+  input[type="radio"]:checked + label
+    color: #d2d6de;
+    background-color: #f4f6fa;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: default;
+
+  .tab-content
+    border-top: 1px solid #ddd;
+    padding-top: rem(25)
+
+  //all available languages
+  #cs-tab:checked ~ .multilingual-content-section .cs-content,
+  #en-tab:checked ~ .multilingual-content-section .en-content
+    display: block;

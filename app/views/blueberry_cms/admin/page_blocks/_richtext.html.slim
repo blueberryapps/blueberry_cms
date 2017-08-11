@@ -1,9 +1,11 @@
 - size = 12 / I18n.available_locales.size
 
-= f.input :css_class
-= f.input :content
-  .row
-    = f.simple_fields_for :content_translations do |localized_field|
-      - I18n.available_locales.map do |locale|
-        div class="col-md-#{size}"
-          = localized_field.input locale, input_html: { value: richtext.content_translations[locale], class: 'redactor' }, as: :text
+.form-layout
+  = f.input :css_class
+
+.form-layout
+  - I18n.available_locales.each do |locale|
+    .tab-content class="#{locale}-content"
+      = f.input :content
+        = f.simple_fields_for :content_translations do |localized_field|
+          = localized_field.input locale, input_html: { value: richtext.content_translations[locale], class: 'redactor' }, as: :text, label: false
