@@ -15,5 +15,6 @@
               i.glyphicon.glyphicon-trash title=t('blueberry_cms.admin.common.remove')
     .collapse.in id="toggle-#{f.object_id}"
       .panel-body
-        = f.input :_type, as: :hidden
-        = render f.object, f: f
+        .form-layout
+          = f.input :_type, as: :hidden
+          = render f.object, f: f

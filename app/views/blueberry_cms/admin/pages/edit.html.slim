@@ -10,7 +10,9 @@
         .multilingual-tabs-section
           - I18n.available_locales.each do |locale|
             input type="radio" id="#{locale}-tab" class="#{locale}-tab" name="lang-tabs" checked=(locale == I18n.default_locale)
-            label.tab-label for="#{locale}-tab" = locale
+          .multilingual-tabs-labels
+            - I18n.available_locales.each do |locale|
+              label.tab-label id="#{locale}-tab" for="#{locale}-tab" = locale
           .multilingual-content-section
             = render 'form', f: f
       .box-footer.sticky data-sticky='bottom'
