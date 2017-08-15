@@ -1,34 +1,30 @@
-= f.input :name
-  .row
-    = f.simple_fields_for :name_translations do |localized_field|
-      - I18n.available_locales.each do |locale|
-          .col-md-6 = localized_field.input locale, input_html: { value: f.object.name_translations[locale] }
+.form-layout
+  - I18n.available_locales.each do |locale|
+    .tab-content class="#{locale}-content"
+      = f.input :name
+        = f.simple_fields_for :name_translations do |localized_field|
+          = localized_field.input locale, input_html: { value: f.object.name_translations[locale] }, label: false
+      = f.input :meta_title
+        = f.simple_fields_for :meta_title_translations do |localized_field|
+          = localized_field.input locale, input_html: { value: f.object.meta_title_translations[locale] }, label: false
+      = f.input :meta_description
+        = f.simple_fields_for :meta_description_translations do |localized_field|
+          = localized_field.input locale, input_html: { value: f.object.meta_description_translations[locale] }, label: false, as: :text
+      = f.input :meta_keywords
+        = f.simple_fields_for :meta_keywords_translations do |localized_field|
+          = localized_field.input locale, input_html: { value: f.object.meta_keywords_translations[locale] }, label: false
 
 hr
-= f.input :show_in_menu, as: :boolean
-= f.input :show_in_footer, as: :boolean
 
-
-- unless f.object.persisted? && f.object.root?
-  = f.association :parent, collection: nested_set_options(BlueberryCMS::Page, f.object),
+.form-layout
+  - unless f.object.persisted? && f.object.root?
+    = f.association :parent, collection: nested_set_options(BlueberryCMS::Page, f.object),
                   include_blank: false
 
 hr
-= f.input :meta_title
-  .row
-    = f.simple_fields_for :meta_title_translations do |localized_field|
-      - I18n.available_locales.each do |locale|
-          .col-md-6 = localized_field.input locale, input_html: { value: f.object.meta_title_translations[locale] }
-= f.input :meta_description
-  .row
-    = f.simple_fields_for :meta_description_translations do |localized_field|
-      - I18n.available_locales.each do |locale|
-          .col-md-6 = localized_field.input locale, input_html: { value: f.object.meta_description_translations[locale] }
-= f.input :meta_keywords
-  .row
-    = f.simple_fields_for :meta_keywords_translations do |localized_field|
-      - I18n.available_locales.each do |locale|
-          .col-md-6 = localized_field.input locale, input_html: { value: f.object.meta_keywords_translations[locale] }
+
+= f.input :show_in_menu, as: :boolean
+= f.input :show_in_footer, as: :boolean
 
 hr
 
