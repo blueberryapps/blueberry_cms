@@ -10,5 +10,13 @@ module BlueberryCMS
   def self.config
     yield self
   end
+
+  def self.scope=(scope)
+    RequestStore.store[:blueberry_cms] = scope
+  end
+
+  def self.scope
+    RequestStore.store[:blueberry_cms] || nil
+  end
 end
 

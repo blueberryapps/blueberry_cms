@@ -6,6 +6,7 @@ module BlueberryCMS
     include Mongoid::Tree::Ordering
     include Mongoid::Slug
     include BlueberryCMS::Sortable
+    include BlueberryCMS::Scopable
 
     field :name,             localize: true
     field :meta_title,       localize: true
@@ -25,7 +26,7 @@ module BlueberryCMS
 
     accepts_nested_attributes_for :blocks, allow_destroy: true
 
-    validates :path, uniqueness: true
+    validates :path, uniqueness: { scope: :scope }
     validates :name, presence: true
 
     before_destroy :ensure_root, :move_children_to_parent

@@ -1,6 +1,7 @@
 module BlueberryCMS
   class Image
     include Mongoid::Document
+    include BlueberryCMS::Scopable
 
     field :name, localize: true
     field :image_processing, type: Boolean, default: false
