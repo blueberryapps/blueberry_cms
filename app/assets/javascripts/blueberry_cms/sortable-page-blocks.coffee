@@ -12,5 +12,5 @@ $ ->
   init_sortable()
 
   $('div#blocks').on 'sortupdate', (e) ->
-    $('div#blocks > div.row.nested-fields').map (position) ->
+    $('> .nested-fields', this).map (position) ->
       $(this).find('input[id$=_position]').val(position)
