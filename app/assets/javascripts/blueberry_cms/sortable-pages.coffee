@@ -1,5 +1,5 @@
 $ ->
-  action = $('.page-tree').data('url')
+  action = $('.pages-tree').data('url')
 
   sortable(
     'ul.pages',
