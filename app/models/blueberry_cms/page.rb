@@ -7,6 +7,7 @@ module BlueberryCMS
     include Mongoid::Slug
     include BlueberryCMS::Sortable
 
+    field :active,           localize: true, type: Boolean
     field :name,             localize: true
     field :meta_title,       localize: true
     field :meta_description, localize: true
@@ -31,6 +32,7 @@ module BlueberryCMS
     before_destroy :ensure_root, :move_children_to_parent
     after_rearrange :rebuild_path
 
+    scope :active,    -> { where(active: true) }
     scope :in_menu,   -> { where(show_in_menu: true) }
     scope :in_footer, -> { where(show_in_footer: true) }
 

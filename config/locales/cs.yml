@@ -60,6 +60,7 @@ cs:
         url: URL
         target: Otevřít v novém okně
       'blueberry_cms/page':
+        active: Aktivní
         name: Název
         parent: Rodič
         path: Url adresa

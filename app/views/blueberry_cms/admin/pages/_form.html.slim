@@ -1,6 +1,9 @@
 .form-layout
   - I18n.available_locales.each do |locale|
     .tab-content class="#{locale}-content"
+      = f.input :active
+        = f.simple_fields_for :active_translations do |localized_field|
+          = localized_field.input locale, input_html: { checked: f.object.active_translations[locale] }, as: :boolean, label: false
       = f.input :name
         = f.simple_fields_for :name_translations do |localized_field|
           = localized_field.input locale, input_html: { value: f.object.name_translations[locale] }, label: false
