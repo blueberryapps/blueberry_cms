@@ -16,7 +16,8 @@ module BlueberryCMS
 
     def menu_links(links)
       links.map do |link|
-        content_tag(:li, link(link))
+        link.css_class = 'nav-link'
+        content_tag(:li, link(link), class: 'nav-item')
       end
     end
 
