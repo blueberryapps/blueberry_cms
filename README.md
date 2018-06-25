@@ -36,23 +36,23 @@ $ gem install blueberry_cms
 ```ruby
 # config/initializers/blueberry_cms.rb
 
-module BreadcrumbLeft
+module BreadcrumbWhite
   extend ActiveSupport::Concern
 
   included do
-    field :breadcrumb_left, type: Boolean, default: false
+    field :breadcrumb_white, type: Boolean, default: false
   end
 end
 
 ActiveSupport::Reloader.to_prepare do
-  BlueberryCMS::Page.send(:include,  BreadcrumbLeft)
+  BlueberryCMS::Page.send(:include,  BreadcrumbWhite)
 end
 ```
 
 ```slim
 # app/views/blueberry_cms/admin/pages/_custom_fields.html.slim
 
-= f.input :breadcrumb_left
+= f.input :breadcrumb_white
 ```
 
 ## Contributing
