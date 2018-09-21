@@ -67,3 +67,5 @@ cs:
         show_in_footer: V patičce
         show_in_menu: V hlavním menu
         slug: Slug
+      'blueberry_cms/page_block':
+        block_name: Název bloku
