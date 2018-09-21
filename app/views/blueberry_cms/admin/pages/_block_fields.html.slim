@@ -2,10 +2,12 @@
   .panel.panel-default
     .panel-heading
       .row
-        .col-sm-6
+        .col-sm-1
           - unless f.object.new_record?
             i.glyphicon.glyphicon-resize-vertical
             = f.input :position, as: :hidden
+        .col-sm-5
+          strong = f.object.block_name.presence || f.object.model_name.human
         .col-sm-6.text-right
           .panel-actions
             - unless f.object.new_record?

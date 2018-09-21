@@ -3,6 +3,7 @@ module BlueberryCMS
     include Mongoid::Document
     include Mongoid::Attributes::Dynamic
 
+    field :block_name
     field :position, type: Integer
     field :css_class
 
