@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'carrierwave-mongoid'
   s.add_dependency 'cocoon'
   s.add_dependency 'draper', '~> 3.0.0'
+  s.add_dependency 'diffy', '~> 3.2', '>= 3.2.1'
   s.add_dependency 'liquid'
   s.add_dependency 'mongoid'
   s.add_dependency 'mongoid-slug'
@@ -32,6 +33,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'slim-rails'
   s.add_dependency 'vimeo'
   s.add_dependency 'wisper', '~> 2.0.0'
-
   s.add_development_dependency 'sqlite3'
 end

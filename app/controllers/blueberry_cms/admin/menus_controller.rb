@@ -1,6 +1,6 @@
 module BlueberryCMS
   module Admin
-    class MenusController < BlueberryCMS.page_admin_controller.constantize
+    class MenusController < BlueberryCMS.config.page_admin_controller.constantize
       helper BlueberryCMS::PagesHelper
       before_action :find_menu, only: %i(edit update destroy)
 

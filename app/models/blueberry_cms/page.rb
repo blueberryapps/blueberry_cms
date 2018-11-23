@@ -8,6 +8,7 @@ module BlueberryCMS
     include Mongoid::Tree::Ordering
     include Mongoid::Slug
     include BlueberryCMS::Sortable
+    include BlueberryCMS::Trackable if BlueberryCMS.config.enabled_versions
 
     field :active,           localize: true, type: Boolean
     field :custom_slug,      localize: true
@@ -25,7 +26,19 @@ module BlueberryCMS
                          cascade_callbacks: true,
                          order:             :position.asc
 
+    def track_changes(_page)
+      return unless BlueberryCMS.config.enabled_versions
+      enable_tracking
+      save_version
+    end
+
     slug :slug_source, localize: true
+
+    if BlueberryCMS.config.enabled_versions
+      after_initialize do
+        self[:blocks] ||= []
+      end
+    end
 
     accepts_nested_attributes_for :blocks, allow_destroy: true
 

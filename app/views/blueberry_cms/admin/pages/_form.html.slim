@@ -24,6 +24,9 @@
         = f.simple_fields_for :meta_keywords_translations do |localized_field|
           = localized_field.input locale, input_html: { value: f.object.meta_keywords_translations[locale] }, label: false
 
+  .tab-content.versions-content
+    = render 'versions'
+
 hr
 
 .form-layout

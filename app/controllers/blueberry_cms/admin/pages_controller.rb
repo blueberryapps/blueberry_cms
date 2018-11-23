@@ -1,6 +1,6 @@
 module BlueberryCMS
   module Admin
-    class PagesController < BlueberryCMS.page_admin_controller.constantize
+    class PagesController < BlueberryCMS.config.page_admin_controller.constantize
       include Wisper::Publisher
       helper BlueberryCMS::PagesHelper
 

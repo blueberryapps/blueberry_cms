@@ -68,6 +68,11 @@ cs:
           preview: Náhled
           show_in_footer: Zobrazeno v patičce
           show_in_menu: Zobrazeno v menu
+          versions: Revize verzí
+        versions:
+          destroy: Odstranit
+          set_version: 'Použít verzi %{version}'
+          version: 'Verze %{version}'
     page_blocks:
       faq:
         show_less_faq: Méně často kladených otázek

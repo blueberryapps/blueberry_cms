@@ -1,0 +1,24 @@
+style
+  = Differ.css
+
+- if BlueberryCMS.config.enabled_versions
+  table.table
+    - @page.versions.desc(:version).limit(10).each do |version|
+      tr
+        td.col-md-1
+          = I18n.t('blueberry_cms.admin.pages.versions.version', version: version.version)
+          br
+          small = I18n.l(version.created_at, format: :short)
+        td.col-md-9
+
+          - Differ.new(version.altered_attributes).changes.each do |row|
+            table.table
+              tr
+                td.col-md-2 == row[:key]
+                td.col-md-5 == row[:left]
+                td.col-md-5 == row[:right]
+
+        td.col-md-2
+          - unless @page.version == version.version
+            = link_to I18n.t('blueberry_cms.admin.pages.versions.set_version', version: version.version), revert_admin_page_versions_path(@page.id, version: version.version), class: 'btn btn-primary'
+            =< link_to I18n.t('blueberry_cms.admin.pages.versions.destroy'), admin_page_version_path(@page.id, version.id), method: :delete, class: 'btn btn-danger'
