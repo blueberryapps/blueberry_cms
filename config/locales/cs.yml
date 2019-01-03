@@ -1,14 +1,58 @@
 cs:
   blueberry_cms:
     admin:
+      common:
+        back: Zpět
+        cannot_remove: Nelze odebrat je využíván sdíleným blokem
+        collapse: Zmenšit/Zvětšit
+        destroy: Smazat
+        edit: Upravit
+        home: Home
+        preview: Náhled
+        remove: Odebrat blok
+        save_and_continue: Uložit a pokračovat
+        select_category: 'Vyberte kategorii, nebo zadejte název nové'
+        settings: Nastavení
+        you_sure: Jste si jistý/á?
+      menus:
+        edit:
+          title: Editace menu
+        form:
+          add: Přidat
+        index:
+          list: Menu
+          new: Nový
+          title: Seznam menu
+        menu:
+          edit: Upravit
+      page_blocks:
+        faq:
+          add: Přidat otázku
+        faq_questions_fields:
+          remove: Odebrat otázku
+        links:
+          add: Přidat odkaz
+        links_links_fields:
+          remove: Odebrat odkaz
+        shared:
+          shared_page: 'Sdíleno ze stránky: %{page}'
+        tabs:
+          add: Přidat tab
+        tabs_tabs_fields:
+          remove: Odebrat Tab
+        videogallery:
+          add: Přidat video
+        videos_fields:
+          remove: Odebrat video
       pages:
         edit:
           title: Upravit stránku
         empty:
           no_pages: Nebyly nalezeny žádné stránky
         form:
-          add: Přidat %{type}
+          add: 'Přidat %{type}'
           blocks: Bloky
+          name_hint: 'Možnost použít Markdown **tučně**, *kurzíva*'
           submit: Uložit stránku
         index:
           list: Stránky
@@ -18,48 +62,27 @@ cs:
           title: Vytvořit stránku
         page:
           edit: Upravit
+          hide_in_footer: Skryto v patičce
+          hide_in_menu: Skryto v menu
           new_child: Přidat podstránku
           preview: Náhled
-          show_in_menu: "Zobrazeno v menu"
-          hide_in_menu: "Skryto v menu"
-          hide_in_footer: "Skryto v patičce"
-          show_in_footer: "Zobrazeno v patičce"
-      common:
-        home: Home
-        back: Zpět
-        collapse: Collapse
-        destroy: Smazat
-        edit: Upravit
-        preview: Náhled
-        remove: Odebrat blok
-        save_and_continue: Uložit a pokračovat
-        you_sure: "Jste si jistý/á?"
-      menus:
-        edit:
-          title: Editace menu
-        form:
-          add: Přidat
-        index:
-          title: Seznam menu
-          list: Menu
-          new: Nový
-        menu:
-          edit: Upravit
+          show_in_footer: Zobrazeno v patičce
+          show_in_menu: Zobrazeno v menu
+    page_blocks:
+      faq:
+        show_less_faq: Méně často kladených otázek
+        show_more_faq: Další často kladené otázky
   mongoid:
-    models:
-      'blueberry_cms/page': stránku
-      'blueberry_cms/page_blocks/gallery': galerii
-      'blueberry_cms/page_blocks/rich_text': text blok
     attributes:
-      'blueberry_cms/menu_link':
+      blueberry_cms/menu_link:
         anchor: Kotva
         css_class: Css class
         name: Jméno
         page_id: ID
         position: Pozice
-        url: URL
         target: Otevřít v novém okně
-      'blueberry_cms/page':
+        url: URL
+      blueberry_cms/page:
         active: Aktivní
         name: Název
         parent: Rodič
@@ -67,3 +90,7 @@ cs:
         show_in_footer: V patičce
         show_in_menu: V hlavním menu
         slug: Slug
+    models:
+      blueberry_cms/page: stránku
+      blueberry_cms/page_blocks/gallery: galerii
+      blueberry_cms/page_blocks/rich_text: text blok

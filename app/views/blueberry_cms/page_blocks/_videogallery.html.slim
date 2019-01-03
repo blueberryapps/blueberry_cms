@@ -1,0 +1,27 @@
+.row
+  .col-lg-6
+    - if videogallery.content.present?
+      .mb-40.mb-80-md
+        == videogallery.content
+
+#carouselAbsolvents.carousel.slide
+  .carousel-inner
+    - videogallery.videos.each_slice(4).with_index do |videos, index|
+      .carousel-item class=('active' if index.zero?)
+        .row.gallery
+          - videos.each do |video|
+            .col-6.col-md-3
+              .video-reference-preview
+                a.video-reference-preview__image.lightbox href=video.watch_link data-poster=video.preview_url
+                  = image_tag video.preview_url, class: 'video-reference-preview__img'
+                  = image_tag 'play.svg', class: 'video-reference-preview__play'
+              .video-reference-preview__name.tc
+                h3.h6.white.fw7.mb-5 = video.title
+                h4.h6.fw4.white = video.job
+
+  - if videogallery.videos.size > 4
+    a.carousel-control.carousel-control-prev href="#carouselAbsolvents" role="button" data-slide="prev"
+      = icon('arrow-left-simple')
+
+    a.carousel-control.carousel-control-next href="#carouselAbsolvents" role="button" data-slide="next"
+      = icon('arrow-right-simple')

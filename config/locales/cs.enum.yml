@@ -1,0 +1,10 @@
+cs:
+  enum:
+    blueberry_cms/page_blocks/gallery:
+      orientation:
+        left: Vlevo
+        right: Vpravo
+    blueberry_cms/page_blocks/rich_text:
+      orientation:
+        left: Vlevo
+        right: Vpravo

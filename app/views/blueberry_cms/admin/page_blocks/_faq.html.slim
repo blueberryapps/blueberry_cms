@@ -1,0 +1,15 @@
+- block_id = "block#{f.object_id}"
+
+.form-layout
+  - I18n.available_locales.each do |locale|
+    .tab-content class="#{locale}-content"
+      = f.input :title
+        = f.simple_fields_for :title_translations do |localized_field|
+          = localized_field.input locale, input_html: { value: faq.title_translations[locale] }, label: false
+
+ul.list-inline.list-inline--full-width.questions.sortable aria-dropeffect='move' data-handle='.move-handler' id=block_id
+  = f.simple_fields_for :questions do |question|
+    = render 'blueberry_cms/admin/page_blocks/faq_questions_fields', f: question
+
+.link
+  =< link_to_add_association t('.add'), f, :questions, class: 'btn btn-primary', partial: 'blueberry_cms/admin/page_blocks/faq_questions_fields', data: { association_insertion_node: "##{block_id}", association_insertion_method: 'append' }

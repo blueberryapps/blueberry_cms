@@ -1,0 +1,23 @@
+.nested-fields class=('hidden' if f.object.marked_for_destruction?)
+  .col-lg-6
+    .panel.panel-default
+      .panel-body
+        = f.input :css_class
+        = f.input :percentage
+        = f.input :title
+        = f.input :description, as: :text, input_html: { class: 'redactor' }
+        = f.input :url
+        = f.input :page_id, collection: nested_set_options(BlueberryCMS::Page)
+        = f.input :image
+        - if f.object.image.present?
+          - if f.object.image?
+            .form-group.form-group--no-label.form-group--image-preview
+              - if f.object.image.content_type == 'image/svg+xml'
+                = image_tag f.object.image.url
+              - else
+                = image_tag f.object.image.url(:thumb)
+        hr
+        .form-group--no-label
+          = link_to_remove_association f, class: 'btn btn-danger btn-sm'
+            i.glyphicon.glyphicon-remove
+            =<t('.remove')

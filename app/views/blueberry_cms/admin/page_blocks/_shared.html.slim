@@ -1,0 +1,8 @@
+.form-layout
+  - collection = BlueberryCMS::PageBlocks::Shared.avaible_shared_blocks_for_select
+  .row
+    .col-md-8
+      = f.input :block_id, collection: collection, include_blank: false
+    .col-md-4
+      - if f.object&.page_by_block
+        = link_to t('.shared_page', page: f.object&.page_by_block.name), [:edit, :admin, f.object&.page_by_block]
