@@ -1,3 +1,9 @@
+- if f.error_notification
+  div class='alert alert-danger'
+    - f.object.errors.full_messages.each do |message|
+      = message
+      br
+
 .form-layout
   - I18n.available_locales.each do |locale|
     .tab-content class="#{locale}-content"
@@ -6,7 +12,12 @@
           = localized_field.input locale, input_html: { checked: f.object.active_translations[locale] }, as: :boolean, label: false
       = f.input :name
         = f.simple_fields_for :name_translations do |localized_field|
-          = localized_field.input locale, input_html: { value: f.object.name_translations[locale] }, label: false
+          = localized_field.input locale, input_html: { value: f.object.name_translations[locale] }, label: false, hint: t('.name_hint')
+      - unless f.object.root?
+        = f.input :custom_slug
+          = f.simple_fields_for :custom_slug_translations do |localized_field|
+            = localized_field.input locale, input_html: { value: f.object.custom_slug_translations[locale], placeholder: I18n.with_locale(locale) { f.object.slug_builder.to_url } }, label: false
+            .well = I18n.with_locale(locale) { f.object.to_path}
       = f.input :meta_title
         = f.simple_fields_for :meta_title_translations do |localized_field|
           = localized_field.input locale, input_html: { value: f.object.meta_title_translations[locale] }, label: false
@@ -21,13 +32,9 @@ hr
 
 .form-layout
   - unless f.object.persisted? && f.object.root?
+    hr
     = f.association :parent, collection: nested_set_options(BlueberryCMS::Page, f.object),
                   include_blank: false
-
-hr
-
-= f.input :show_in_menu, as: :boolean
-= f.input :show_in_footer, as: :boolean
 
 hr
 
@@ -37,7 +44,9 @@ h3 = t '.blocks'
     = render 'block_fields', f: block
 
   .links
-    - BlueberryCMS::PageBlock.types.each do |type|
-      =< link_to_add_association t('.add', type: type.model_name.human), f, :blocks,
-                                   wrap_object: Proc.new { |block| block.becomes(type) },
-                                   class:       'btn btn-primary'
+    .btn-group role="group"
+      span.btn.btn-default = t('.add', type: 'blok')
+      - BlueberryCMS::PageBlock.types.each do |type|
+        =< link_to_add_association type.model_name.human, f, :blocks,
+                                     wrap_object: Proc.new { |block| block.becomes(type) },
+                                     class:       'btn btn-primary'

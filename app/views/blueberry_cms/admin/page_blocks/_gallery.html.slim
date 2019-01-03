@@ -1,7 +1,16 @@
 = f.input :css_class
+= f.input :orientation, collection: translated_const(BlueberryCMS::PageBlocks::Gallery, :orientation), include_blank: false
+= f.input :red_background, as: :boolean
 
-.row.images
-  = f.simple_fields_for :images do |image|
+.form-layout
+  - I18n.available_locales.each do |locale|
+    .tab-content class="#{locale}-content"
+      = f.input :content
+        = f.simple_fields_for :content_translations do |localized_field|
+          = localized_field.input locale, input_html: { value: gallery.content_translations[locale], class: 'redactor' }, as: :text, label: false
+
+.gallery
+  .gallery__input
+    = f.input :images_files, as: :file, input_html: { multiple: true }
+  = f.simple_fields_for :images, wrapper: :vertical_form do |image|
     = render 'blueberry_cms/admin/page_blocks/gallery_images_fields', f: image
-.link.col-md-3
-  = f.input :images_files, as: :file, input_html: { multiple: true }

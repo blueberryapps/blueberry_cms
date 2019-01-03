@@ -1,10 +1,14 @@
-.nested-fields.col-md-3
-  = image_tag f.object.image.url(:thumb)
+.nested-fields.gallery__item
+  .well.well-sm
+    .preview
+      - if f.object.image.present?
+        = image_tag f.object.image&.url(:thumb)
 
-  = f.input :name
-    .row
-      = f.simple_fields_for :name_translations do |localized_field|
-        - I18n.available_locales.each do |locale|
-            .col-md-6 = localized_field.input locale, input_html: { value: f.object.name_translations[locale] }
+    - I18n.available_locales.each do |locale|
+      .tab-content class="#{locale}-content"
+        = f.input :name
+          = f.simple_fields_for :name_translations do |localized_field|
+            = localized_field.input locale, input_html: { value: f.object.name_translations[locale]}, label: false
 
-  = link_to_remove_association t('blueberry_cms.common.remove'), f
+    = f.input :href
+    = link_to_remove_association t('.remove'), f

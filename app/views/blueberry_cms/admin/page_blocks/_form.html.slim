@@ -1,0 +1,18 @@
+= f.input :css_class
+= f.input :kind, collection: translated_const(BlueberryCMS::PageBlocks::Form, :kind), include_blank: false
+= f.input :mailing_group_ids, collection: MailingGroup.all, include_blank: false, input_html: { multiple: true, class: 'select2' }
+
+.form-layout
+  - I18n.available_locales.each do |locale|
+    .tab-content class="#{locale}-content"
+      = f.input :name
+        = f.simple_fields_for :name_translations do |localized_field|
+          = localized_field.input locale, input_html: { value: form.name_translations[locale] }, label: false
+
+      = f.input :description
+        = f.simple_fields_for :description_translations do |localized_field|
+          = localized_field.input locale, input_html: { value: form.description_translations[locale], class: 'redactor' }, as: :text, label: false
+
+      = f.input :button_text
+        = f.simple_fields_for :button_text_translations do |localized_field|
+          = localized_field.input locale, input_html: { value: form.button_text_translations[locale] }, label: false

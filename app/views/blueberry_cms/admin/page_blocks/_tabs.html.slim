@@ -1,0 +1,11 @@
+- block_id = "block#{f.object_id}"
+
+ul.list-inline.list-inline--full-width.sortable aria-dropeffect='move' data-handle='.move-handler' id=block_id
+  = f.simple_fields_for :tabs do |link|
+    = render 'blueberry_cms/admin/page_blocks/tabs_tabs_fields', f: link
+
+.link
+  =< link_to_add_association t('.add'), f, :tabs,
+       class:   'btn btn-primary',
+       partial: 'blueberry_cms/admin/page_blocks/tabs_tabs_fields',
+       data:    { 'association-insertion-node' => "##{block_id}", 'association-insertion-method' => 'append' }

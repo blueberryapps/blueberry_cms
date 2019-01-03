@@ -1,0 +1,17 @@
+li.nested-fields.video class=('hidden' if f.object.marked_for_destruction?)
+  .panel.panel-default
+    .panel-heading
+      - if f.object.persisted?
+        i.glyphicon.glyphicon-resize-horizontal.move-handler
+        = f.input :position, as: :hidden
+
+    .panel-body
+      = f.input :title
+      = f.input :job
+      = f.input :movie_url
+
+      hr
+      .form-group--no-label
+        = link_to_remove_association f, class: 'btn btn-danger btn-sm'
+          i.glyphicon.glyphicon-remove
+          =< t('.remove')

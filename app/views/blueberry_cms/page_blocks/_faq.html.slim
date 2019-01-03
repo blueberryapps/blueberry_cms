@@ -1,0 +1,19 @@
+- if faq.title.present?
+  h2.mb-60-mb.heading-breaking == faq.title
+
+div data-controller='show-more'
+  .accordion#accordion-faq
+    - faq.questions.each_with_index do |question, index|
+      .accordion__wrapper data-target='show-more.item' style=('display:none' if index > 2)
+        a.accordion__card id="heading#{index}" href="collapse#{index}" aria-expanded='false' data={ target: "#collapse#{index}", toggle: 'collapse' }
+          h3.f20
+            svg.icon.icon-arrow-down-simple
+              = icon('arrow-down-simple')
+            = question.question
+        .accordion__content.collapse id="collapse#{index}" aria-labelledby="heading#{index}" data-parent='#accordion-faq'
+          .accordion__content__wrapper == question.answer
+
+    - if faq.questions.size > 3
+        p.mt-30.mt-60-md
+          a.btn.btn-primary href="#" data={ action: 'click->show-more#trigger', target: 'show-more.button', close_title: t('.show_less_faq') }
+            = t('.show_more_faq')

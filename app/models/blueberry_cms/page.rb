@@ -8,26 +8,29 @@ module BlueberryCMS
     include BlueberryCMS::Sortable
 
     field :active,           localize: true, type: Boolean
-    field :name,             localize: true
-    field :meta_title,       localize: true
+    field :custom_slug,      localize: true
     field :meta_description, localize: true
     field :meta_keywords,    localize: true, type: Array
-    field :slug,             localize: true
+    field :meta_title,       localize: true
+    field :name,             localize: true
     field :path,             localize: true
     field :published_at,     type: DateTime
-    field :show_in_menu,     type: Boolean
     field :show_in_footer,   type: Boolean
+    field :show_in_menu,     type: Boolean
+    field :slug,             localize: true
 
     embeds_many :blocks, class_name:        'BlueberryCMS::PageBlock',
                          cascade_callbacks: true,
                          order:             :position.asc
 
-    slug :name, localize: true
+    slug :slug_source, localize: true
 
     accepts_nested_attributes_for :blocks, allow_destroy: true
 
     validates :path, uniqueness: true
     validates :name, presence: true
+
+    after_save :rebuild_children_paths
 
     before_destroy :ensure_root, :move_children_to_parent
     after_rearrange :rebuild_path
@@ -35,9 +38,34 @@ module BlueberryCMS
     scope :active,    -> { where(active: true) }
     scope :in_menu,   -> { where(show_in_menu: true) }
     scope :in_footer, -> { where(show_in_footer: true) }
+    scope :ordered, lambda {
+      order(name: :asc).collation(locale: 'cs', strength: 1)
+    }
+
+    def slug_source
+      custom_slug.presence || name
+    end
+
+    def rebuild_children_paths
+      if %i[custom_slug name].any? { |f| attribute_changed? f.to_s }
+        children.each(&:save)
+      end
+    end
 
     def to_path
       "/#{I18n.locale}#{path}"
+    end
+
+    def name_translations=(attributes)
+      attributes.stringify_keys!
+      primary_locale_name = attributes[I18n.default_locale.to_s]
+      empty_locale_keys   = attributes.select { |_, v| v.blank? || v.empty? }.keys
+
+      empty_locale_keys.each do |locale|
+        attributes[locale] = primary_locale_name
+      end
+
+      super
     end
 
     private

@@ -1,0 +1,19 @@
+.form-block
+  - if form.name.present?
+
+  - if form.kind == 'contact'
+    .mw-690.mcenter.mb-30.mb-60-md
+      h2.h2.tc.heading-breaking = form.name
+      - if form.description.present?
+        .tc == form.description
+    .contact-form
+      .contact-form__box = render 'contact_forms/form', mailing_group_ids: form.mailing_group_ids, button_text: form.button_text
+
+  - if form.kind == 'request'
+    h2.h2 = form.name
+    - if form.description.present?
+      == form.description
+    .request-form
+      .request-form__box = render 'request_forms/form', mailing_group_ids: form.mailing_group_ids, button_text: form.button_text
+
+  = render 'modal_terms'
