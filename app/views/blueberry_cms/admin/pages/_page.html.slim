@@ -4,20 +4,11 @@ li data-id=page.id
       i.glyphicon.glyphicon-resize-vertical
     .col-name
       => link_to [:edit, :admin, page]
-        strong = page.name
+        strong = page.decorate.name
         span<
           i.glyphicon.glyphicon-pencil
           =< t('.edit')
     .col-info
-      - if page.show_in_menu
-        i.glyphicon.glyphicon-ok title=t('.show_in_menu')
-      - else
-        i.glyphicon.glyphicon-remove title=t('.hide_in_menu')
-
-      - if page.show_in_footer
-        i.glyphicon.glyphicon-ok title=t('.show_in_footer')
-      - else
-        i.glyphicon.glyphicon-remove title=t('.hide_in_footer')
 
     .col-actions
       = link_to page.to_path, target: :_blank, class: 'btn btn-sm btn-secondary'

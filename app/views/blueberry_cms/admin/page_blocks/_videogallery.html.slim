@@ -1,0 +1,15 @@
+- block_id = "block#{f.object_id}"
+
+.form-layout
+  - I18n.available_locales.each do |locale|
+    .tab-content class="#{locale}-content"
+      = f.input :content
+        = f.simple_fields_for :content_translations do |localized_field|
+          = localized_field.input locale, input_html: { value: videogallery.content_translations[locale], class: 'redactor' }, as: :text, label: false
+
+ul.list-inline.videos.sortable aria-dropeffect='move' data-handle='.move-handler' id=block_id
+  = f.simple_fields_for :videos do |video|
+    = render 'blueberry_cms/admin/page_blocks/videos_fields', f: video
+
+.link
+  =< link_to_add_association t('.add'), f, :videos, class: 'btn btn-primary', partial: 'blueberry_cms/admin/page_blocks/videos_fields', data: { association_insertion_node: "##{block_id}", association_insertion_method: 'append' }

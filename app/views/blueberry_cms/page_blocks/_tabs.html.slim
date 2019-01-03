@@ -1,0 +1,8 @@
+ul.nav.nav-tabs id='myTab' role="tablist"
+  - tabs.tabs.each_with_index do |tab, i|
+    li.nav-item
+      a.nav-link class="#{'active' if i == 0}" href="#tab_#{tab.id}" data-toggle="tab" role="tab" aria-controls="tab_#{tab.id}" aria-selected="true" = tab.title
+
+.tab-content
+  - tabs.tabs.each_with_index do |tab, i|
+    .tab-pane.fade class="#{'active show' if i == 0}" id="tab_#{tab.id}" role="tabpanel" aria-labelledby="tab_#{tab.id}" == tab.content

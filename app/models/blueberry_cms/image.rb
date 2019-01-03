@@ -2,11 +2,10 @@ module BlueberryCMS
   class Image
     include Mongoid::Document
 
+    field :href, type: String
     field :name, localize: true
-    field :image_processing, type: Boolean, default: false
 
     mount_uploader :image, ImageUploader
-    process_in_background :image if ::CarrierWave::Backgrounder.backend
 
     def self.find(id)
       _id = BSON::ObjectId.from_string(id)

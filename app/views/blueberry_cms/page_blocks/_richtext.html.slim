@@ -1,2 +1,10 @@
-- output = Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true, autolink: false, prettify: true).render(richtext.content)
-== Liquid::Template.parse(output).render('h' => liquid_view_context)
+- if richtext.image.present?
+  .row
+    .col-gallery-text.col-gallery-text--single-image
+      - output = Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true, autolink: false, prettify: true).render(richtext.content)
+      == Liquid::Template.parse(output).render('h' => liquid_view_context)
+    .col-gallery-image.col-gallery-image--single-image
+      = image_tag richtext.image.url(:gallery_block), class: 'gallery-image gallery-image--single'
+- else
+  - output = Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true, autolink: false, prettify: true).render(richtext.content)
+  == Liquid::Template.parse(output).render('h' => liquid_view_context)

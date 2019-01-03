@@ -1,20 +1,54 @@
+- cannot_destroy = f.object.shared? && f.object.used_for_sharing?
+
 .nested-fields
   .panel.panel-default
     .panel-heading
       .row
         .col-sm-6
-          - unless f.object.new_record?
-            i.glyphicon.glyphicon-resize-vertical
-            = f.input :position, as: :hidden
+          .dragger
+            - unless f.object.new_record?
+              i.glyphicon.glyphicon-resize-vertical
+              = f.input :position, as: :hidden
+          strong = f.object.decorate.label
         .col-sm-6.text-right
           .panel-actions
+            = f.input :active, as: :boolean, input_html: { checked: f.object.active == false ? false : true }
+
             - unless f.object.new_record?
-              = link_to "#toggle-#{f.object_id}", data: {toggle: 'collapse'}, aria: {expanded: 'true'}
-                i.glyphicon.glyphicon-resize-small title=t('blueberry_cms.admin.common.collapse')
-            = link_to_remove_association f
-              i.glyphicon.glyphicon-trash title=t('blueberry_cms.admin.common.remove')
-    .collapse.in id="toggle-#{f.object_id}"
+              = link_to "#toggle-#{f.object_id}", data: { toggle: 'collapse' }, aria: { expanded: 'true' }
+                i.glyphicon.glyphicon-resize-small data-toggle="tooltip" data-placement="left" title=t('blueberry_cms.admin.common.collapse')
+            a aria-controls="collapse-#{f.object_id}" aria-expanded="false" data-toggle="collapse" href="#collapse-#{f.object_id}" role="button"
+              i.glyphicon.glyphicon-cog data-toggle="tooltip" data-placement="left" title=t('blueberry_cms.admin.common.settings')
+            = link_to_remove_association f, class: "#{'prevented' if cannot_destroy }"
+              i.glyphicon.glyphicon-trash data-toggle="tooltip" data-placement="left" title=t("#{'cannot_' if cannot_destroy}remove", scope: 'blueberry_cms.admin.common')
+
+    .collapse.block-collapse class=('in' if block_visible?(f.object)) id="toggle-#{f.object_id}"
       .panel-body
         .form-layout
           = f.input :_type, as: :hidden
+          div.collapse.toggled-collapse id="collapse-#{f.object_id}"
+            - unless f.object.is_a?(BlueberryCMS::PageBlocks::Shared)
+              = f.input :shared, as: :boolean
+
+            = f.input :block_anchor, as: :string
+            .row
+              .col-md-6 = f.input :top_margin, collection: BlueberryCMS::PageBlock::MARGINS,
+                                  checked: f.object.top_margin || 'sm', as: :radio_buttons,
+                                  item_wrapper_class: 'radio-inline',
+                                  label_method: lambda { |label| label.upcase }
+              .col-md-6 = f.input :top_margin_xs, collection: BlueberryCMS::PageBlock::MARGINS,
+                                  checked: f.object.top_margin_xs || 'sm', as: :radio_buttons,
+                                  item_wrapper_class: 'radio-inline',
+                                  label_method: lambda { |label| label.upcase }
+            .row
+              .col-md-6 = f.input :bottom_margin, collection: BlueberryCMS::PageBlock::MARGINS,
+                                  checked: f.object.bottom_margin || 'sm', as: :radio_buttons,
+                                  item_wrapper_class: 'radio-inline',
+                                  label_method: lambda { |label| label.upcase }
+              .col-md-6 = f.input :bottom_margin_xs, collection: BlueberryCMS::PageBlock::MARGINS,
+                                  checked: f.object.bottom_margin_xs || 'sm', as: :radio_buttons,
+                                  item_wrapper_class: 'radio-inline',
+                                  label_method: lambda { |label| label.upcase }
+            hr
+
           = render f.object, f: f
