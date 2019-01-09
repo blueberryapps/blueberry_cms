@@ -9,7 +9,6 @@
       - if link.link_background.present?
         li.navbar-sub__item
           = link_to link.link_url, class: "navbar-sub__link"
-            = icon('building')
             - if link.title?
               = link.title
             - else
@@ -24,7 +23,6 @@
                 h3.h6.fw7.mb-15 = link.link_title
               - if link.description?
                 p.gray-600 == link.description
-              = icon('arrow-right')
 - elsif links.kind == 'graph'
   .mw-690.mcenter
     - if links.title.present?

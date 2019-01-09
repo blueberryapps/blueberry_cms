@@ -7,8 +7,6 @@ div data-controller='show-more'
       .accordion__wrapper data-target='show-more.item' style=('display:none' if index > 2)
         a.accordion__card id="heading#{index}" href="collapse#{index}" aria-expanded='false' data={ target: "#collapse#{index}", toggle: 'collapse' }
           h3.f20
-            svg.icon.icon-arrow-down-simple
-              = icon('arrow-down-simple')
             = question.question
         .accordion__content.collapse id="collapse#{index}" aria-labelledby="heading#{index}" data-parent='#accordion-faq'
           .accordion__content__wrapper == question.answer
