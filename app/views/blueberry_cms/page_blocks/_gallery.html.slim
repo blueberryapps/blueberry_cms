@@ -17,6 +17,5 @@
       .col-gallery-text.col-gallery-text--single-image
         == gallery.content
     .col-gallery-image.col-gallery-image--single-image
-      .mt-30.mt-0-md
-        - gallery.images.each do |image|
-          = image_tag image.image.url(:gallery_block), alt: image.name, class: 'gallery-image gallery-image--single'
+      - gallery.images.each do |image|
+        = image_tag image.image.url(:gallery_block), alt: image.name, class: 'gallery-image gallery-image--single'

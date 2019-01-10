@@ -1,8 +1,7 @@
 .row
   .col-lg-6
     - if videogallery.content.present?
-      .mb-40.mb-80-md
-        == videogallery.content
+      == videogallery.content
 
 #carouselAbsolvents.carousel.slide
   .carousel-inner
@@ -14,10 +13,10 @@
               .video-reference-preview
                 a.video-reference-preview__image.lightbox href=video.watch_link data-poster=video.preview_url
                   = image_tag video.preview_url, class: 'video-reference-preview__img'
-                  = image_tag 'play.svg', class: 'video-reference-preview__play'
-              .video-reference-preview__name.tc
-                h3.h6.white.fw7.mb-5 = video.title
-                h4.h6.fw4.white = video.job
+                  .video-reference-preview__play
+              .video-reference-preview__name
+                h3.h3 = video.title
+                h4.h4= video.job
 
   - if videogallery.videos.size > 4
     a.carousel-control.carousel-control-prev href="#carouselAbsolvents" role="button" data-slide="prev"
