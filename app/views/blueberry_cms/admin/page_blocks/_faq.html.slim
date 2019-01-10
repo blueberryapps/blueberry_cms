@@ -1,6 +1,9 @@
 - block_id = "block#{f.object_id}"
 
 .form-layout
+  = f.input :css_class
+
+.form-layout
   - I18n.available_locales.each do |locale|
     .tab-content class="#{locale}-content"
       = f.input :title
