@@ -8,7 +8,6 @@ module BlueberryCMS
     field :url,              type: String
     field :page_id,          type: BSON::ObjectId
     field :image_tmp,        type: String
-    field :percentage,       type: String
 
     embedded_in :links, class_name: 'BlueberryCMS::PageBlocks::Links'
 

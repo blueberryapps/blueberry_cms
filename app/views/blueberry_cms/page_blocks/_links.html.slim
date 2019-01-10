@@ -1,50 +1,24 @@
-- if links.kind == 'basic'
-  - if links.title.present?
-    h2.h2.text-center.mb-20 = links.title.presence
-  - if links.content.present?
-    .mb-30.mb-50-md
-      .tc == Liquid::Template.parse(links.content).render('h' => liquid_view_context)
-  ul.navbar-sub
-    - links.links.decorate.each do |link|
-      - if link.link_background.present?
-        li.navbar-sub__item
-          = link_to link.link_url, class: "navbar-sub__link"
+- if links.title.present?
+  h2.h2.text-center.mb-20 = links.title.presence
+- if links.content.present?
+  .mb-30.mb-50-md
+    .tc == Liquid::Template.parse(links.content).render('h' => liquid_view_context)
+ul.navbar-sub
+  - links.links.decorate.each do |link|
+    - if link.link_background.present?
+      li.navbar-sub__item
+        = link_to link.link_url, class: "navbar-sub__link"
+          - if link.title?
+            = link.title
+          - else
+            = link.link_title
+    - else
+      li.navbar-sub__item
+        = link_to link.link_url, class: "navbar-sub__link navbar-sub__link--hidden-arrow"
+          .navbar-sub__link-content
             - if link.title?
-              = link.title
+              h3.h6.fw7.mb-15 = link.title
             - else
-              = link.link_title
-      - else
-        li.navbar-sub__item
-          = link_to link.link_url, class: "navbar-sub__link navbar-sub__link--hidden-arrow"
-            .navbar-sub__link-content
-              - if link.title?
-                h3.h6.fw7.mb-15 = link.title
-              - else
-                h3.h6.fw7.mb-15 = link.link_title
-              - if link.description?
-                p.gray-600 == link.description
-- elsif links.kind == 'graph'
-  .mw-690.mcenter
-    - if links.title.present?
-      h2.h3.tc.mb-60-md.heading-breaking = links.title.presence
-    - if links.content.present?
-      .tc == Liquid::Template.parse(links.content).render('h' => liquid_view_context)
-  .progres-boxes.mt-80
-    - links.links.decorate.each do |link|
-      .progres-box
-        .progres-box__header
-          .progres-box__percentage
-            h3.h5
-              = link.percentage
-              <span>%</span>
-          - if link.image.url
-            - if link.image.content_type == 'image/svg+xml'
-              = image_tag link.image.url, title: link.title, alt: link.title
-            - else
-              = image_tag link.image.url(:thumb), title: link.title, alt: link.title
-        .progres-box__content
-          h3.h5.mb-20 = link.title
-          == link.description
-        .progres-box__footer
-          p
-            = link_to 'Zobrazit více', link.link_url, class: 'link-underline'
+              h3.h6.fw7.mb-15 = link.link_title
+            - if link.description?
+              p.gray-600 == link.description
