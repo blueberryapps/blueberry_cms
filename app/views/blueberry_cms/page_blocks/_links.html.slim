@@ -1,8 +1,7 @@
 - if links.title.present?
-  h2.h2.text-center.mb-20 = links.title.presence
+  h2.h2 = links.title.presence
 - if links.content.present?
-  .mb-30.mb-50-md
-    .tc == Liquid::Template.parse(links.content).render('h' => liquid_view_context)
+  == Liquid::Template.parse(links.content).render('h' => liquid_view_context)
 ul.navbar-sub
   - links.links.decorate.each do |link|
     - if link.link_background.present?
@@ -17,8 +16,8 @@ ul.navbar-sub
         = link_to link.link_url, class: "navbar-sub__link navbar-sub__link--hidden-arrow"
           .navbar-sub__link-content
             - if link.title?
-              h3.h6.fw7.mb-15 = link.title
+              h3.h3 = link.title
             - else
-              h3.h6.fw7.mb-15 = link.link_title
+              h3.h3 = link.link_title
             - if link.description?
-              p.gray-600 == link.description
+              p == link.description
