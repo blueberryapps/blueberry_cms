@@ -1,7 +1,6 @@
 - block_id = "block#{f.object_id}"
 
 = f.input :css_class
-= f.input :kind, collection: translated_const(BlueberryCMS::PageBlocks::Links, :kind), include_blank: false
 
 .form-layout
   - I18n.available_locales.each do |locale|
