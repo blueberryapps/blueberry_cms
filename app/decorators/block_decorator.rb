@@ -8,6 +8,6 @@ class BlockDecorator < Draper::Decorator
   end
 
   def process_markdown(string)
-    h.sanitize Markdown.new(string).to_html, tags: %w(strong em)
+    h.sanitize(Markdown.new(string).to_html, tags: %w(strong em))
   end
 end

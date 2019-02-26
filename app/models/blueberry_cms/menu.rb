@@ -1,3 +1,5 @@
+require 'redcarpet/render_strip'
+
 module BlueberryCMS
   class Menu
     include Mongoid::Document
@@ -6,7 +8,10 @@ module BlueberryCMS
     field :name, type: String
     validates :name, presence: true
 
-    slug :name
+    slug :name do |menu|
+      renderer = Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
+      renderer.render(menu.name)
+    end
 
     embeds_many :links,  class_name:        'BlueberryCMS::MenuLink',
                          cascade_callbacks: true,
