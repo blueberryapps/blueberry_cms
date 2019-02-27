@@ -1,3 +1,5 @@
+require 'redcarpet/render_strip'
+
 module BlueberryCMS
   class Page
     include Mongoid::Document
@@ -43,7 +45,8 @@ module BlueberryCMS
     }
 
     def slug_source
-      custom_slug.presence || name
+      renderer = Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
+      renderer.render(custom_slug.presence || name)
     end
 
     def rebuild_children_paths
