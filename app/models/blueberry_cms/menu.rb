@@ -10,7 +10,7 @@ module BlueberryCMS
 
     slug :name do |menu|
       renderer = Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
-      renderer.render(menu.name)
+      renderer.render(menu.name).squish
     end
 
     embeds_many :links,  class_name:        'BlueberryCMS::MenuLink',
