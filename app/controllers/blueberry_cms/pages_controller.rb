@@ -10,6 +10,7 @@ module BlueberryCMS
 
     def show
       @page = Page.find_by(path: "/#{params[:path]}")
+      @page.preview!(params[:version]) if params[:version]
     end
 
     private

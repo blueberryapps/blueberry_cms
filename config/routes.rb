@@ -1,6 +1,8 @@
 BlueberryCMS::Engine.routes.draw do
   namespace :admin do
-    resources :pages
+    resources :pages do
+      put :restore, on: :member
+    end
     resources :menus, except: :show
   end
 

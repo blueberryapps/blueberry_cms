@@ -46,6 +46,8 @@ cs:
           remove: Odebrat video
       pages:
         edit:
+          preview_version: Náhled verze
+          restore: Obnovit
           title: Upravit stránku
         empty:
           no_pages: Nebyly nalezeny žádné stránky
