@@ -1,6 +1,11 @@
 BlueberryCMS::Engine.routes.draw do
   namespace :admin do
-    resources :pages
+    resources :pages do
+      resources :versions do
+        get 'revert/:version', action: :revert, on: :collection, as: :revert
+      end
+    end
+
     resources :menus, except: :show
   end
 

@@ -1,14 +1,14 @@
 require 'blueberry_cms/engine'
+require 'blueberry_cms/configuration'
 require 'blueberry_cms/liquid_tags/page_link'
 require 'blueberry_cms/liquid_tags/page_url'
 
 module BlueberryCMS
-  mattr_accessor :page_admin_controller, :custom_blocks
-
-  @@parent_controller = 'ApplicationController'
-  @@custom_blocks     = []
-
-  def self.config
-    yield self
+  class << self
+    def config(&block)
+      @configuration ||= Configuration.new
+      yield @configuration if block_given?
+      @configuration
+    end
   end
 end

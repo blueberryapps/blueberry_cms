@@ -29,16 +29,24 @@ module BlueberryCMS
         throw(:abort)
       end
     end
+    after_update { track_changes }
+
+    after_destroy { track_changes }
 
     def self.types
       @types ||= [
         BlueberryCMS::PageBlocks::Gallery,
         BlueberryCMS::PageBlocks::RichText
-      ] + BlueberryCMS.custom_blocks
+      ] + BlueberryCMS.config.custom_blocks
     end
 
     def to_partial_path
       "page_blocks/#{self.class.name.demodulize.downcase}"
+    end
+
+    def track_changes
+      page.enable_tracking
+      page.save_version
     end
   end
 end
