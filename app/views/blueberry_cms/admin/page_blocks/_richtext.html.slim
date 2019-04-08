@@ -1,4 +1,4 @@
-.rich-text-block data-controller='rich-text-block'
+.rich-text-block data-controller='position-switch'
   .form-layout
     = f.input :css_class
 
@@ -6,11 +6,11 @@
               collection:    translated_enum(BlueberryCMS::PageBlocks::RichText, :orientation),
               include_blank: false,
               input_html:    { \
-                data: { target: 'rich-text-block.positionSwitcher', action: 'change->rich-text-block#changePosition' } \
+                data: { target: 'position-switch.positionSwitcher', action: 'change->position-switch#changePosition' } \
               }
 
   .form-layout
-    div data={ target: 'rich-text-block.wrapper' }
+    div data={ target: 'position-switch.wrapper' }
       .image-holder
         - if f.object.image.present?
           - if f.object.image?
@@ -28,3 +28,15 @@
             = f.input :content
               = f.simple_fields_for :content_translations do |localized_field|
                 = localized_field.input locale, input_html: { value: richtext.content_translations[locale], class: 'redactor' }, as: :text, label: false
+
+  .form-layout
+    .image-holder
+      - if f.object.background_image.present?
+        - if f.object.background_image?
+          - if f.object.background_image.content_type == 'image/svg+xml'
+            = image_tag f.object.background_image.url
+          - else
+            = image_tag f.object.background_image.url(:thumb)
+        = f.input :remove_background_image, as: :boolean
+      - else
+        = f.input :background_image

@@ -4,18 +4,23 @@ cs:
     title: Nadpis
   mongoid:
     attributes:
+      blueberry_cms/image:
+        href: URL
+        name: Název
       blueberry_cms/link:
         css_class: CSS Bloku
         description: Popis
         image: Obrázek
         page_id: Stránka
         percentage: Procenta
+        url: URL
       blueberry_cms/page_block:
-        block_anchor: ID Bloku
+        block_anchor: ID bloku
         bottom_margin: Dolní mezera
         bottom_margin_xs: Dolní mezera mobil
-        css_class: CSS Bloku
+        css_class: CSS bloku
         description: Popis
+        image: Obrázek
         images_files: Obrázky
         kind: Typ
         name: Název
@@ -26,6 +31,8 @@ cs:
         top_margin: Horní mezera
         top_margin_xs: Horní mezera mobil
       blueberry_cms/page_blocks/rich_text:
+        background_image: Obrázek na pozadí
+        remove_background_image: Odstranit obrázek na pozadí
         remove_image: Odstranit obrázek
       blueberry_cms/page_blocks/shared:
         block_id: Blok
@@ -33,7 +40,7 @@ cs:
         answer: Odpověď
         question: Otázka
       blueberry_cms/video:
-        movie_url: Url videa
+        movie_url: URL videa
         title: Název
     errors:
       messages:
