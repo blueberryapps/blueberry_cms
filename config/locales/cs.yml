@@ -30,6 +30,8 @@ cs:
           add: Přidat otázku
         faq_questions_fields:
           remove: Odebrat otázku
+        gallery_images_fields:
+          remove: Odebrat obrázek
         links:
           add: Přidat odkaz
         links_links_fields:

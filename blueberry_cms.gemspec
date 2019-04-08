@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'cocoon'
   s.add_dependency 'draper', '~> 3.0.0'
   s.add_dependency 'liquid'
-  s.add_dependency 'mongoid'
+  s.add_dependency 'mongoid', '~> 6.4.2'
   s.add_dependency 'mongoid-slug'
   s.add_dependency 'mongoid-tree'
   s.add_dependency 'mongoid_enumerable'
