@@ -46,7 +46,7 @@ module BlueberryCMS
 
     def slug_source
       renderer = Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
-      renderer.render(custom_slug.presence || name).squish
+      renderer.render(custom_slug.presence || name.presence || '').squish
     end
 
     def rebuild_children_paths
