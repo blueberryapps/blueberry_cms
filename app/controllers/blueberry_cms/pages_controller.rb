@@ -5,7 +5,7 @@ module BlueberryCMS
       def to_liquid; @context; end
     end
 
-    around_action :set_locale
+    around_action :set_locale, if: -> { BlueberryCMS.force_locale }
     helper_method :liquid_view_context
 
     def show
