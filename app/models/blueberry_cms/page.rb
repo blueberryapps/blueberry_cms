@@ -56,7 +56,7 @@ module BlueberryCMS
     end
 
     def to_path
-      "/#{I18n.locale}#{path}"
+      BlueberryCMS.force_locale ? "/#{I18n.locale}#{path}" : path
     end
 
     def name_translations=(attributes)
