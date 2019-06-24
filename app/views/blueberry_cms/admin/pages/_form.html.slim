@@ -24,6 +24,18 @@
         = f.simple_fields_for :meta_keywords_translations do |localized_field|
           = localized_field.input locale, input_html: { value: f.object.meta_keywords_translations[locale] }, label: false
 
+.form-layout
+  .image-holder
+    - if f.object.meta_image.present?
+      - if f.object.meta_image?
+        - if f.object.meta_image.content_type == 'image/svg+xml'
+          = image_tag f.object.meta_image.url
+        - else
+          = image_tag f.object.meta_image.url(:thumb)
+      = f.input :remove_meta_image, as: :boolean
+    - else
+      = f.input :meta_image
+
 hr
 
 .form-layout
