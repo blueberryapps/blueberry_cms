@@ -14,6 +14,12 @@ cs:
         page_id: Stránka
         percentage: Procenta
         url: URL
+      blueberry_cms/page:
+        meta_description: Meta description
+        meta_image: og:image
+        meta_keywords: Meta keywords
+        meta_title: Meta title
+        remove_meta_image: Odstranit og:image
       blueberry_cms/page_block:
         block_anchor: ID bloku
         bottom_margin: Dolní mezera
@@ -45,7 +51,7 @@ cs:
     errors:
       messages:
         restrict_dependent_destroy:
-          is_shared: Nemůžu smazat položku protože existuje závislý blok
+          is_shared: Nemůžu smazat položku, protože existuje závislý blok
     models:
       blueberry_cms/page_blocks/faq: FAQ
       blueberry_cms/page_blocks/gallery: Galerie

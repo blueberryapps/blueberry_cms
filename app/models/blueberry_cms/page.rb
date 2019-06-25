@@ -25,6 +25,8 @@ module BlueberryCMS
                          cascade_callbacks: true,
                          order:             :position.asc
 
+    mount_uploader :meta_image, ImageUploader
+
     slug :slug_source, localize: true
 
     accepts_nested_attributes_for :blocks, allow_destroy: true
