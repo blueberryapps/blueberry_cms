@@ -6,7 +6,7 @@ module BlueberryCMS
     field :job,       type: String
     field :movie_url, type: String
     field :position,  type: Integer
-    field :title,     type: String
+    field :title,     type: String, localize: true
     field :video_id,  type: String
 
     enumerable :channel, %i[youtube vimeo]

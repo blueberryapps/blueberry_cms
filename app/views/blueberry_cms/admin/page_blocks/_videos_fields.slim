@@ -6,7 +6,12 @@ li.nested-fields.video class=('hidden' if f.object.marked_for_destruction?)
         = f.input :position, as: :hidden
 
     .panel-body
-      = f.input :title
+      - I18n.available_locales.each do |locale|
+        .tab-content class="#{locale}-content"
+          = f.input :title
+            = f.simple_fields_for :title_translations do |localized_field|
+              = localized_field.input locale, input_html: { value: f.object.title_translations[locale] }, label: false
+
       = f.input :job
       = f.input :movie_url
 
