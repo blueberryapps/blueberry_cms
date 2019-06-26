@@ -3,9 +3,9 @@ module BlueberryCMS
     include Mongoid::Document
 
     field :css_class,        type: String
-    field :title,            type: String
-    field :description,      type: String
-    field :url,              type: String
+    field :title,            type: String, localize: true
+    field :description,      type: String, localize: true
+    field :url,              type: String, localize: true
     field :page_id,          type: BSON::ObjectId
     field :image_tmp,        type: String
 

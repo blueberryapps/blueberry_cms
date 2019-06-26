@@ -14,8 +14,15 @@ li.nested-fields.tab class=('hidden' if f.object.marked_for_destruction?)
                 i.glyphicon.glyphicon-resize-small title=t('blueberry_cms.admin.common.collapse')
 
     .panel-body.collapse class=('in' if block_visible?(f.object)) id="toggle-#{f.object_id}"
-      = f.input :title
-      = f.input :content, as: :text, input_html: { class: 'redactor' }
+      - I18n.available_locales.each do |locale|
+        .tab-content class="#{locale}-content"
+          = f.input :title
+            = f.simple_fields_for :title_translations do |localized_field|
+              = localized_field.input locale, input_html: { value: f.object.title_translations[locale] }, label: false
+
+          = f.input :content
+            = f.simple_fields_for :content_translations do |localized_field|
+              = localized_field.input locale, input_html: { value: f.object.content_translations[locale], class: 'redactor' }, as: :text, label: false
 
       hr
       .form-group--no-label

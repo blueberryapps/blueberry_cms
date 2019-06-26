@@ -3,9 +3,21 @@
     .panel.panel-default
       .panel-body
         = f.input :css_class
-        = f.input :title
-        = f.input :description, as: :text, input_html: { class: 'redactor' }
-        = f.input :url
+
+        - I18n.available_locales.each do |locale|
+          .tab-content class="#{locale}-content"
+            = f.input :title
+              = f.simple_fields_for :title_translations do |localized_field|
+                = localized_field.input locale, input_html: { value: f.object.title_translations[locale] }, label: false
+
+            = f.input :description
+              = f.simple_fields_for :description_translations do |localized_field|
+                = localized_field.input locale, input_html: { value: f.object.description_translations[locale], class: 'redactor' }, as: :text, label: false
+
+            = f.input :url
+              = f.simple_fields_for :url_translations do |localized_field|
+                = localized_field.input locale, input_html: { value: f.object.url_translations[locale] }, label: false
+
         = f.input :page_id, collection: nested_set_options(BlueberryCMS::Page)
         = f.input :image
         - if f.object.image.present?
