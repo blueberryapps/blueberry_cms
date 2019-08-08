@@ -38,6 +38,8 @@ cs:
         top_margin_xs: Horní mezera mobil
       blueberry_cms/page_blocks/rich_text:
         background_image: Obrázek na pozadí
+        image_alt: Alternativní text
+        image_title: Název obrázku
         remove_background_image: Odstranit obrázek na pozadí
         remove_image: Odstranit obrázek
       blueberry_cms/page_blocks/shared:

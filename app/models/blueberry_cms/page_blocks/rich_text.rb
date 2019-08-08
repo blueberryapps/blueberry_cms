@@ -4,6 +4,8 @@ module BlueberryCMS
       include MongoidEnumerable
 
       field :content, localize: true
+      field :image_alt, type: String, localize: true
+      field :image_title, type: String, localize: true
 
       enumerable :orientation, %i[left right]
 
