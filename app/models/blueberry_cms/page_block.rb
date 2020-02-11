@@ -10,7 +10,7 @@ module BlueberryCMS
     field :bottom_margin,    type: String
     field :bottom_margin_xs, type: String
     field :css_class
-    field :position,         type: Integer
+    field :position,         type: Integer, default: 0
     field :shared,           type: Boolean
     field :top_margin,       type: String
     field :top_margin_xs,    type: String

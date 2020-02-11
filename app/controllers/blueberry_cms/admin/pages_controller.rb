@@ -45,6 +45,12 @@ module BlueberryCMS
         end
       end
 
+      def restore
+        @page = Page.find(params[:id])
+        @page.restore!(params[:version])
+        redirect_to [:edit, :admin, @page]
+      end
+
       def destroy
         @page = Page.find(params[:id])
         if @page.destroy

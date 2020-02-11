@@ -8,6 +8,7 @@ module BlueberryCMS
     include Mongoid::Tree::Ordering
     include Mongoid::Slug
     include BlueberryCMS::Sortable
+    include BlueberryCMS::Versionable
 
     field :active,           localize: true, type: Boolean
     field :custom_slug,      localize: true
