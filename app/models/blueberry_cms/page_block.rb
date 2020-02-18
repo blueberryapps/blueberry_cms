@@ -5,7 +5,7 @@ module BlueberryCMS
 
     MARGINS = %w[0 xs sm md lg xl].freeze
 
-    field :active,           type: Boolean
+    field :active,           type: Boolean, localize: true, default: false
     field :block_anchor,     type: String
     field :bottom_margin,    type: String
     field :bottom_margin_xs, type: String
