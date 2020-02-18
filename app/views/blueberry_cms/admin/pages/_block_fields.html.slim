@@ -12,7 +12,11 @@
           strong = f.object.decorate.label
         .col-sm-6.text-right
           .panel-actions
-            = f.input :active, as: :boolean, input_html: { checked: f.object.active == false ? false : true }
+            - I18n.available_locales.each do |locale|
+              .tab-content class="#{locale}-content"
+                = f.input :active
+                  = f.simple_fields_for :active_translations do |localized_field|
+                    = localized_field.input locale, as: :boolean, input_html: { checked: f.object.active_translations[locale] == false ? false : true }, label: false
 
             - unless f.object.new_record?
               = link_to "#toggle-#{f.object_id}", data: { toggle: 'collapse' }, aria: { expanded: 'true' }
