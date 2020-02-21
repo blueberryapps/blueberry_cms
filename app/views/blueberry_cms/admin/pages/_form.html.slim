@@ -6,6 +6,12 @@
       = f.input :active
         = f.simple_fields_for :active_translations do |localized_field|
           = localized_field.input locale, input_html: { checked: f.object.active_translations[locale] }, as: :boolean, label: false
+      = f.input :show_in_menu
+        = f.simple_fields_for :show_in_menu_translations do |localized_field|
+          = localized_field.input locale, input_html: { checked: f.object.show_in_menu_translations[locale] }, as: :boolean, label: false
+      = f.input :show_in_footer
+        = f.simple_fields_for :show_in_footer_translations do |localized_field|
+          = localized_field.input locale, input_html: { checked: f.object.show_in_footer_translations[locale] }, as: :boolean, label: false
       = f.input :name
         = f.simple_fields_for :name_translations do |localized_field|
           = localized_field.input locale, input_html: { value: f.object.name_translations[locale] }, label: false, hint: t('.name_hint')
@@ -46,8 +52,6 @@ hr
 
 hr
 
-= f.input :show_in_menu, as: :boolean
-= f.input :show_in_footer, as: :boolean
 = render 'custom_fields', f: f
 
 hr
