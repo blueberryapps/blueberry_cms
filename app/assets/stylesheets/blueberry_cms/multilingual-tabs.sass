@@ -15,30 +15,32 @@
     color: #1aabd5
     cursor: pointer
     border-radius: rem(4) rem(4) 0 0
-    border: 1px solid transparent;
+    border: 1px solid transparent
 
     &:hover
-      border-color: #dcdcdc #dcdcdc #ddd;
-      color: #444;
-      background: #f7f7f7;
-      border: 1px solid #ddd;
-      border-bottom-color: transparent;
+      border-color: #dcdcdc #dcdcdc #ddd
+      color: #444
+      background: #f7f7f7
+      border: 1px solid #ddd
+      border-bottom-color: transparent
 
   .tab-content
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #ddd
     padding-top: rem(25)
 
   //all available languages
   #cs-tab:checked ~ .multilingual-tabs-labels #cs-tab,
   #en-tab:checked ~ .multilingual-tabs-labels #en-tab,
+  #de-tab:checked ~ .multilingual-tabs-labels #de-tab,
   #ru-tab:checked ~ .multilingual-tabs-labels #ru-tab
-    color: #d2d6de;
-    background-color: #f4f6fa;
-    border: 1px solid #ddd;
-    border-bottom-color: transparent;
-    cursor: default;
+    color: #d2d6de
+    background-color: #f4f6fa
+    border: 1px solid #ddd
+    border-bottom-color: transparent
+    cursor: default
 
   #cs-tab:checked ~ .multilingual-content-section .cs-content,
   #en-tab:checked ~ .multilingual-content-section .en-content,
+  #de-tab:checked ~ .multilingual-content-section .de-content,
   #ru-tab:checked ~ .multilingual-content-section .ru-content
-    display: block;
+    display: block
