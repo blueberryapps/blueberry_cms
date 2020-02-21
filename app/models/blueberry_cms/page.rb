@@ -17,8 +17,8 @@ module BlueberryCMS
     field :name,             localize: true
     field :path,             localize: true
     field :published_at,     type: DateTime
-    field :show_in_footer,   type: Boolean
-    field :show_in_menu,     type: Boolean
+    field :show_in_footer,   localize: true, type: Boolean
+    field :show_in_menu,     localize: true, type: Boolean
     field :slug,             localize: true
 
     embeds_many :blocks, class_name:        'BlueberryCMS::PageBlock',
