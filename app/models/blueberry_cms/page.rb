@@ -1,5 +1,3 @@
-require 'redcarpet/render_strip'
-
 module BlueberryCMS
   class Page
     include Mongoid::Document
@@ -25,7 +23,7 @@ module BlueberryCMS
                          cascade_callbacks: true,
                          order:             :position.asc
 
-    mount_uploader :meta_image, ImageUploader
+    mount_uploader :meta_image, ::ImageUploader
 
     slug :slug_source, localize: true
 

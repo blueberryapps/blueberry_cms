@@ -9,7 +9,7 @@
             - unless f.object.new_record?
               i.glyphicon.glyphicon-resize-vertical
               = f.input :position, as: :hidden
-          strong = f.object.decorate.label
+          strong = f.object.label
         .col-sm-6.text-right
           .panel-actions
             - I18n.available_locales.each do |locale|
