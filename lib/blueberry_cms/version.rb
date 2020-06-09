@@ -1,3 +1,3 @@
 module BlueberryCMS
-  VERSION = '0.1.4.2'.freeze
+  VERSION = '1.0.0-beta1'.freeze
 end

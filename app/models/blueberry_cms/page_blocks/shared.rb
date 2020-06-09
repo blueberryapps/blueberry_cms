@@ -7,7 +7,7 @@ module BlueberryCMS
         blocks = BlueberryCMS::Page.all.map(&:blocks).flatten.select(&:shared)
 
         blocks.map do |block|
-          [[block.page.name, block.decorate.label].join(' | '), block.id]
+          [[block.page.name, block.label].join(' | '), block.id]
         end
       end
 

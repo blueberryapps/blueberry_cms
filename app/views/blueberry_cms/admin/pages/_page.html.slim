@@ -4,7 +4,7 @@ li data-id=page.id
       i.glyphicon.glyphicon-resize-vertical
     .col-name
       => link_to [:edit, :admin, page]
-        strong = page.decorate.name
+        strong = page.name
         span<
           i.glyphicon.glyphicon-pencil
           =< t('.edit')
